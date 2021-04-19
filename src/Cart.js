@@ -103,7 +103,7 @@ function Cart(prop)
                                 </div>
                             </div></td>
                             <td class="col-sm-1 col-md-1" style={{textAlign: "center" }}>
-                            <input type="email" class="form-control" id="proquty"   value="2" />
+                            <input type="email" class="form-control" id="proquty"   value={each.quantity} />
                             </td>
                             <td class="col-sm-1 col-md-1 text-center"><strong >{each.price}/-</strong><input type="hidden" id="proprice" value={each.price}/></td>
                             <td class="col-sm-1 col-md-1 text-center"><strong>{each.price * each.quantity}/-</strong></td>
@@ -149,9 +149,11 @@ function Cart(prop)
                             </td>
                             <td>
                                 <Link to="/checkout">
+                                    {
+                                    prop.loginstatus?
                             <button type="button" class="btn btn-success" onClick={checkout}>
                                 Checkout <span class="glyphicon glyphicon-play"></span>
-                            </button>
+                            </button>:<Link to="/login"><button className="btn btn-success">Login For Add To Cart</button></Link>}
                             </Link>
                             </td>
                         </tr>
@@ -167,5 +169,7 @@ function Cart(prop)
 }
  Cart = withRouter(Cart)
 export default connect(function(state,prop){
-    
+    return{
+        loginstatus:state?.isloggedin
+    }
 })(Cart)
