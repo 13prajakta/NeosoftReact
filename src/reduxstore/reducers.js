@@ -18,13 +18,19 @@ var demo= function(state={
             return state
         }
         case "CHECK_USER":{
-            console.log("Here we have to write logic for login")
+            console.log("Here we check user is presengt or not")
             state = {...state}
             state["isloggedin"] =true
             state["user"]=action.payload
             return state
         }
 
+        case "CARTDETAIL":{
+            console.log("Here we see cart details")
+            // state = {...state}
+            state["cart"]=action.payload
+            return state
+        }
         default :return state
     }
 }

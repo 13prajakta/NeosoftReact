@@ -1,9 +1,10 @@
 import React from 'react'
 import axios from 'axios'
 import {useEffect , useState} from "react";
-import { Link } from "react-router-dom"
+import { Link ,withRouter} from "react-router-dom"
+import { connect } from "react-redux";
 
-function Cart()
+function Cart(prop)
 {
     
     let [cartdetail,setCart]=useState([])
@@ -19,12 +20,44 @@ function Cart()
     }).then((response)=>{
         console.log("response from  cart details  api" ,response.data)
         setCart(response.data.data)
+        
+        //prop.history.push("/checkout")
     },(error)=>{
         console.log("error from cart details api",error)
     })
     },[])
-  
+    function remove(cakeid){
+     
+        var cartremove={
+            cakeid:cakeid,      
+        }
+        console.log(" cake details" ,cartremove)
+        var token = localStorage.token
+        let cartapi="https://apibyashu.herokuapp.com/api/removecakefromcart"
+        axios({
+            url:cartapi,
+            method:"post",
+            data:cartremove,
+            headers:{
+                authtoken:token
+              } 
+        }).then((response)=>{
+            console.log("response from remove item from cart api" , response.data)
+            //alert(response.data)
+            setCart(response.data.data)
+            window.location.reload();
+            
+        },(error)=>{
+            console.log("error from remove item from cart api" , error)
+        })
+    }
     
+    function checkout(){
+        prop.dispatch({
+            type:"CARTDETAIL",
+            payload:cartdetail
+        })
+    }
   
     return(
        
@@ -46,7 +79,8 @@ function Cart()
                     { cartdetail?.length > 0 && cartdetail.map((each, index)=>{
                         
                 return (
-                        <tr>
+                    
+                    <tr>
                             <td class="col-sm-8 col-md-6">
                             <div class="media">
                                 <a class="thumbnail pull-left" href="#"> <img class="media-object" src={each.image} style={{width: "72px", height: "72px"}}/> </a>
@@ -62,7 +96,7 @@ function Cart()
                             <td class="col-sm-1 col-md-1 text-center"><strong >{each.price}/-</strong><input type="hidden" id="proprice" value={each.price}/></td>
                             <td class="col-sm-1 col-md-1 text-center"><strong>{each.pricey}/-</strong></td>
                             <td class="col-sm-1 col-md-1">
-                            <button type="button" class="btn btn-danger">
+                            <button type="button" class="btn btn-danger" onClick={() => remove(each.cakeid)}>
                                 <span class="glyphicon glyphicon-remove"></span> Remove
                             </button></td>
                         </tr>
@@ -102,7 +136,7 @@ function Cart()
                             </td>
                             <td>
                                 <Link to="/checkout">
-                            <button type="button" class="btn btn-success">
+                            <button type="button" class="btn btn-success" onClick={checkout}>
                                 Checkout <span class="glyphicon glyphicon-play"></span>
                             </button>
                             </Link>
@@ -114,8 +148,10 @@ function Cart()
             
         </div>
     </div>
-
+    
     )
 }
-
-export default Cart
+ Cart = withRouter(Cart)
+export default connect(function(state,prop){
+    
+})(Cart)

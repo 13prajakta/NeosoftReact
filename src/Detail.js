@@ -4,6 +4,8 @@ import Cakes from './Data';
 import Card from './Card';
 import {useEffect , useState} from "react";
 import {useParams,Link} from "react-router-dom";
+import { BrowserRouter as Router , Route ,Redirect ,Switch} from 'react-router-dom';
+
 
 var img="cake.jpg";
 var veg="veg.png";
@@ -23,7 +25,7 @@ var style={
 var apgn={
     textApgn:"center"
 }
-export default function Detail (){
+export default function Detail (prop){
 
     let [cakeDetails,setCakes]=useState([])
     let  params= useParams()
@@ -77,6 +79,7 @@ export default function Detail (){
                     console.log("response from add to cart api" , response.data)
                     //alert(response.data)
                     setAddcart(response.data.data)
+                   prop.history.push("/cart");
                     
                 },(error)=>{
                     console.log("error from add to cart api" , error)
