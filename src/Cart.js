@@ -20,6 +20,10 @@ function Cart(prop)
     }).then((response)=>{
         console.log("response from  cart details  api" ,response.data)
         setCart(response.data.data)
+        prop.dispatch({
+            type:"CARTDETAIL",
+            payload:response.data
+        })
         
         //prop.history.push("/checkout")
     },(error)=>{
@@ -59,9 +63,16 @@ function Cart(prop)
         })
     }
   
+    // let subtotal=(event)=>
+    // {
+    //     console.log("subtotal event >>>>>>>>>>>>>>>>>",event)
+    //     // total:event.target.value
+    // }
+    
     return(
        
         <div class="container">
+            
         <div class="row">
         
             <div class="col-sm-12 col-md-10 col-md-offset-1">
@@ -76,10 +87,11 @@ function Cart(prop)
                         </tr>
                     </thead>
                     <tbody>
-                    { cartdetail?.length > 0 && cartdetail.map((each, index)=>{
-                        
-                return (
                     
+                    { cartdetail?.length > 0 && cartdetail.map((each, index)=>{
+                        var subtot={total:each.price * each.quantity 
+                            }
+                        return (   
                     <tr>
                             <td class="col-sm-8 col-md-6">
                             <div class="media">
@@ -91,24 +103,25 @@ function Cart(prop)
                                 </div>
                             </div></td>
                             <td class="col-sm-1 col-md-1" style={{textAlign: "center" }}>
-                            <input type="email" class="form-control" id="proquty"  value={each.quantity} />
+                            <input type="email" class="form-control" id="proquty"   value="2" />
                             </td>
                             <td class="col-sm-1 col-md-1 text-center"><strong >{each.price}/-</strong><input type="hidden" id="proprice" value={each.price}/></td>
-                            <td class="col-sm-1 col-md-1 text-center"><strong>{each.pricey}/-</strong></td>
+                            <td class="col-sm-1 col-md-1 text-center"><strong>{each.price * each.quantity}/-</strong></td>
                             <td class="col-sm-1 col-md-1">
                             <button type="button" class="btn btn-danger" onClick={() => remove(each.cakeid)}>
                                 <span class="glyphicon glyphicon-remove"></span> Remove
                             </button></td>
+                            {/* <input type="hidden" id="subtot" value={each.price.reduce((a, b) => a + b, 0)} onBlur={subtotal}></input> */}
                         </tr>
-                        )
+                       )
                     })
-                }
+                }  
                         <tr>
                             <td>   </td>
                             <td>   </td>
                             <td>   </td>
                             <td><h5>Subtotal</h5></td>
-                            <td class="text-right"><h5><strong>Rs/-</strong></h5></td>
+                            <td class="text-right"><h5><strong> Rs/-</strong></h5></td>
                         </tr>
                         <tr>
                             <td>   </td>
@@ -147,6 +160,7 @@ function Cart(prop)
             </div>
             
         </div>
+       
     </div>
     
     )

@@ -44,7 +44,10 @@ function Nav(prop){
             
         }
     }
-   
+    const leng = prop.cart?.length;
+    //const length = array.length;
+    //console.log("length of array",array)
+    //console.log("length of array",array)
     return (
         <div>
         {/* {increasecount} */}
@@ -72,12 +75,12 @@ function Nav(prop){
                 </Link> {/* <button onClick={search} class="btn btn-outline-success my-2 my-sm-0">Search</button> */}
                {
                prop.loginstatus ?<div>
-               <Link to="/cart"><button className="btn btn-warning"><FontAwesomeIcon icon={faShoppingCart} /></button></Link>
+               <Link to="/cart"><button className="btn btn-warning"><FontAwesomeIcon icon={faShoppingCart} /> <span class="badge badge-light">{prop.cart?.length}</span></button></Link>
                <button className="btn btn-danger" onClick={logout}>Logout</button> </div> 
                :  <Link to="/login"><button className="btn btn-success">Login</button></Link>
                }
- 
-                </form>
+              
+             </form>
                 
             </div>
             </nav>
@@ -89,6 +92,7 @@ export default connect(function(state,props){
     console.log("............state initially" , state)
     return {
         user:state ?.user?.name,
-        loginstatus:state?.isloggedin
+        loginstatus:state?.isloggedin,
+        cart:state?.cart  
     }
 })(Nav)

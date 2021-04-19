@@ -27,7 +27,7 @@ var demo= function(state={
 
         case "CARTDETAIL":{
             console.log("Here we see cart details")
-            // state = {...state}
+            state = {...state}
             state["cart"]=action.payload
             return state
         }
