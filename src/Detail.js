@@ -3,6 +3,7 @@ import axios from 'axios'
 import Cakes from './Data';
 import Card from './Card';
 import {useEffect , useState} from "react";
+import { connect } from "react-redux";
 import {useParams,Link} from "react-router-dom";
 import { BrowserRouter as Router , Route ,Redirect ,Switch} from 'react-router-dom';
 
@@ -25,7 +26,7 @@ var style={
 var apgn={
     textApgn:"center"
 }
-export default function Detail (prop){
+ function Detail (prop){
 
     let [cakeDetails,setCakes]=useState([])
     let  params= useParams()
@@ -51,13 +52,7 @@ export default function Detail (prop){
             },[])
           
             var addCart = function(){
-                // if(user.email=="13psathwane@gmail.com" && user.password=="123" && user.name=='prajakta sathwane')
-                // {
-                //     setError("login successfull")
-                // }
-                // else{
-                //     setError("Invalid Login")
-                // }
+               
                 var cartdetail={
                     cakeid:cakeDetails.cakeid, 
                     image:cakeDetails.image,
@@ -125,12 +120,21 @@ export default function Detail (prop){
                         <p className="text-warning" style={{fontStyle:"itapc"}}><b>{cakeDetails.type}</b></p></h5>
                         <p>{cakeDetails.description}</p>
                         <p> Only At <b> Rs {cakeDetails.price} /-</b></p>
+                        {
+                           prop.loginstatus ?
                         <div><button className="btn btn-success text-center" onClick={addCart}>ADD TO CART</button></div>
-                    </div>
+                    :<Link to="/login"><button className="btn btn-warning">Login For add To Cart</button></Link>}
+                        </div>
                     </div>
             </div>
         )
   
 }
 
-// export default Describe
+
+export default connect(function(state,props){
+    //console.log("............state initially" , state)
+    return {
+        loginstatus:state?.isloggedin,
+    }
+})(Detail)

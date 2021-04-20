@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 
 function Cart(prop)
 {
+    let [checkCart,setcheckCart]=useState(false)
     
     let [cartdetail,setCart]=useState([])
     var token = localStorage.token
@@ -20,16 +21,17 @@ function Cart(prop)
     }).then((response)=>{
         console.log("response from  cart details  api" ,response.data)
         setCart(response.data.data)
+         setcheckCart(false)
+        //prop.history.push("/checkout")
         prop.dispatch({
-            type:"CARTDETAIL",
+            type:"ADDCARTDETAIL",
             payload:response.data
         })
-        
-        //prop.history.push("/checkout")
+        //prop.history.push("/cart")
     },(error)=>{
         console.log("error from cart details api",error)
     })
-    },[])
+    },[checkCart])
     function remove(cakeid){
      
         var cartremove={
@@ -49,7 +51,10 @@ function Cart(prop)
             console.log("response from remove item from cart api" , response.data)
             //alert(response.data)
             setCart(response.data.data)
-            window.location.reload();
+            setcheckCart(true)
+            prop.dispatch({
+                type:"REMOVECARTDETAIL",
+            })
             
         },(error)=>{
             console.log("error from remove item from cart api" , error)
@@ -89,8 +94,7 @@ function Cart(prop)
                     <tbody>
                     
                     { cartdetail?.length > 0 && cartdetail.map((each, index)=>{
-                        var subtot={total:each.price * each.quantity 
-                            }
+                        
                         return (   
                     <tr>
                             <td class="col-sm-8 col-md-6">
@@ -170,6 +174,7 @@ function Cart(prop)
  Cart = withRouter(Cart)
 export default connect(function(state,prop){
     return{
-        loginstatus:state?.isloggedin
+        loginstatus:state?.isloggedin,
+        carttt:state?.cartdata
     }
 })(Cart)

@@ -31,6 +31,20 @@ var demo= function(state={
             state["cart"]=action.payload
             return state
         }
+
+        case "ADDCARTDETAIL":{
+            console.log("Here we see add cart details")
+            state = {...state}
+            state["cartdata"]=action.payload
+            return state
+        }
+
+        case "REMOVECARTDETAIL":{
+            console.log("Here we remove cart details")
+            state = {...state}
+           delete state["cartdata"]
+            return state
+        }
         default :return state
     }
 }

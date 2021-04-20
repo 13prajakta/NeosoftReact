@@ -93,6 +93,6 @@ export default connect(function(state,props){
     return {
         user:state ?.user?.name,
         loginstatus:state?.isloggedin,
-        cart:state?.cart  
+        cart:state?.cartdata  
     }
 })(Nav)
