@@ -19,6 +19,7 @@ function Home(){
                 console.log("error from all cakes api",error)
             })
             },[])
+            //console.log("data from all cakes",cakes)
     return (
         
         <div>

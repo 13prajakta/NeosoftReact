@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { Link } from "react-router-dom"
+import './image.css';
 // import Cakes from './Data';
 // import Card from './Card';
 import {useEffect , useState} from "react";
@@ -35,8 +36,11 @@ function Card(props)
             </div> */}
             <div style={foot}>
             <div className="card" >
-            <Link to={'/card/'+props.cakedata.cakeid}><img src={props.cakedata.image} style={wei} className="card-img-top" alt="..." /></Link>
-            <p><h3>{props.cakedata.name}</h3></p>
+            <Link to={'/card/'+props.cakedata.cakeid}><img src={props.cakedata.image} style={wei} className="card-img-top image" alt="..." />
+            {/* <p><h3>{props.cakedata.name}</h3></p> */}
+            <div class="overlay">
+                <div class="text"><p>{props.cakedata.name}</p></div>
+            </div></Link>
             </div>
             </div>
             
