@@ -6,13 +6,12 @@ import './image.css';
 import {useEffect , useState} from "react";
 
 var wei={
-    width: "220px",
-    height: "200px",
+    width: "270px",
+    height: "250px",
 }
 var foot={
         
     paddingTop:"50px",
-    paddingBottom:"50px",
     paddingLeft:"40px"
 }
 function Card(props)
