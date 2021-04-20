@@ -23,10 +23,7 @@ function Cart(prop)
         setCart(response.data.data)
          setcheckCart(false)
         //prop.history.push("/checkout")
-        prop.dispatch({
-            type:"ADDCARTDETAIL",
-            payload:response.data
-        })
+        
         //prop.history.push("/cart")
     },(error)=>{
         console.log("error from cart details api",error)
@@ -52,9 +49,7 @@ function Cart(prop)
             //alert(response.data)
             setCart(response.data.data)
             setcheckCart(true)
-            prop.dispatch({
-                type:"REMOVECARTDETAIL",
-            })
+            
             
         },(error)=>{
             console.log("error from remove item from cart api" , error)
@@ -75,8 +70,8 @@ function Cart(prop)
     // }
     
     return(
-       
-        <div class="container">
+         (cartdetail?.length > 0) ? 
+                <div class="container">
             
         <div class="row">
         
@@ -84,7 +79,7 @@ function Cart(prop)
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>Product</th>
+                            <th>Product</th> 
                             <th>Quantity</th>
                             <th class="text-center">Price</th>
                             <th class="text-center">Total</th>
@@ -95,6 +90,7 @@ function Cart(prop)
                     
                     { cartdetail?.length > 0 && cartdetail.map((each, index)=>{
                         
+                       
                         return (   
                     <tr>
                             <td class="col-sm-8 col-md-6">
@@ -118,22 +114,10 @@ function Cart(prop)
                             {/* <input type="hidden" id="subtot" value={each.price.reduce((a, b) => a + b, 0)} onBlur={subtotal}></input> */}
                         </tr>
                        )
+                        
                     })
                 }  
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td><h5>Subtotal</h5></td>
-                            <td class="text-right"><h5><strong> Rs/-</strong></h5></td>
-                        </tr>
-                        <tr>
-                            <td>   </td>
-                            <td>   </td>
-                            <td>   </td>
-                            <td><h5>Estimated shipping</h5></td>
-                            <td class="text-right"><h5><strong>Rs/-</strong></h5></td>
-                        </tr>
+
                         <tr>
                             <td>   </td>
                             <td>   </td>
@@ -167,7 +151,7 @@ function Cart(prop)
             
         </div>
        
-    </div>
+    </div> : <div style={{marginTop:"30px"}}><p className="alert alert-danger">Your Cart empty</p></div>
     
     )
 }

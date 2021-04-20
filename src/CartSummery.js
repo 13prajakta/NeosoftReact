@@ -8,9 +8,9 @@ function CartSummery(props)
 		          return (<div class="media">
             <img src={each.image}  class="mr-3" alt="..." style={{width:"150px",height:"100px"}}/>
             <div class="media-body">
-                <h5 class="mt-0">{each.name}</h5>
-                <p class="mt-0">quantity : {each.quantity}</p>
-                <p>Total : {each.price}/-</p>
+                <h4 class="mt-0" style={{color:"#b9384f"}}>{each.name}</h4>
+                <p class="mt-0" style={{color:"#f4c55c",fontWeight:"bold"}}>quantity : {each.quantity}</p>
+                <p style={{color:"#329e72",fontWeight:"bold"}}>Price : {each.price}/-</p>
             </div>
             </div>
             )

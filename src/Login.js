@@ -71,6 +71,9 @@ import { Link ,withRouter} from "react-router-dom"
     return(
         <div>
        <h2 className="alert alert-info" style={{marginTop:"20px"}}>Login Here</h2>
+       <div className="row">
+           <div className="col-md-3"></div>
+       <div className="col-md-6">
         <div className="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input onChange={getEmail} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ></input>
@@ -88,7 +91,8 @@ import { Link ,withRouter} from "react-router-dom"
         </div>
         <Link to="/signup"><a>Need help?Register</a></Link> <Link ><a class="text-danger">Forgot Password?</a></Link><br></br>
         <button  className="btn btn-primary" onClick={login}>Login</button>
-        
+        </div> 
+        </div> 
     </div>
     )
 }
