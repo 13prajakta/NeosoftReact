@@ -159,7 +159,7 @@ function Address()
             
             </div>
    
-    <button type="submit" class="btn btn-primary">Continue To Checkout</button>
+    <button  class="btn btn-primary">Continue To Checkout</button>
     </form>
 </div>
     )
