@@ -10,7 +10,6 @@ var demo= function(state={
             return state
         }
         case "LOGOUT":{
-            
             state = {...state}
             localStorage.clear()
            delete state["isloggedin"] 
@@ -28,23 +27,18 @@ var demo= function(state={
         case "CARTDETAIL":{
             console.log("Here we see cart details")
             state = {...state}
+            state["setcheckCart"]=false
             state["cart"]=action.payload
             return state
         }
 
-        // case "ADDCARTDETAIL":{
-        //     console.log("Here we see add cart details")
-        //     state = {...state}
-        //     state["cartdata"]=action.payload
-        //     return state
-        // }
-
-        // case "REMOVECARTDETAIL":{
-        //     console.log("Here we remove cart details")
-        //     state = {...state}
-        //    delete state["cartdata"]
-        //     return state
-        // }
+        case "REMOVECARTDETAIL":{
+            console.log("Here we remove cart details")
+            state = {...state}
+            delete state["setcheckCart"]
+           delete state["cart"]
+            return state
+        }
         default :return state
     }
 }

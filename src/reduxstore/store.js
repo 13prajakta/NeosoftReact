@@ -1,7 +1,9 @@
-import {createStore} from "redux"
+import {applyMiddleware, createStore} from "redux"
 import demo from "./reducers"
+import {logger} from"./middlewares"
 var store =createStore(demo)
-
+ var middlewares= applyMiddleware(logger)
+//var middlewares= applyMiddleware(FirdtMiddleware)
 // store.dispatch({
 //     type:"login"
 // })

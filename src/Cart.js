@@ -6,29 +6,7 @@ import { connect } from "react-redux";
 
 function Cart(prop)
 {
-    let [checkCart,setcheckCart]=useState(false)
     
-    let [cartdetail,setCart]=useState([])
-    var token = localStorage.token
-    useEffect(()=>{
-        let allcartdetailapi="https://apibyashu.herokuapp.com/api/cakecart"
-        axios({
-        url:allcartdetailapi,
-        method:"post",
-        headers:{
-            authtoken:token
-          } 
-    }).then((response)=>{
-        console.log("response from  cart details  api" ,response.data)
-        setCart(response.data.data)
-         setcheckCart(false)
-        //prop.history.push("/checkout")
-        
-        //prop.history.push("/cart")
-    },(error)=>{
-        console.log("error from cart details api",error)
-    })
-    },[checkCart])
     function remove(cakeid){
      
         var cartremove={
@@ -47,21 +25,21 @@ function Cart(prop)
         }).then((response)=>{
             console.log("response from remove item from cart api" , response.data)
             //alert(response.data)
-            setCart(response.data.data)
-            setcheckCart(true)
-            
-            
+            //setCart(response.data.data)
+            prop.dispatch({
+                type:"REMOVECARTDETAIL"
+            })     
         },(error)=>{
             console.log("error from remove item from cart api" , error)
         })
     }
     
-    function checkout(){
-        prop.dispatch({
-            type:"CARTDETAIL",
-            payload:cartdetail
-        })
-    }
+    // function checkout(){
+    //     prop.dispatch({
+    //         type:"CARTDETAIL",
+    //         payload:cartdetail
+    //     })
+    // }
   
     // let subtotal=(event)=>
     // {
@@ -70,7 +48,7 @@ function Cart(prop)
     // }
     
     return(
-         (cartdetail?.length > 0) ? 
+         (prop.cartdetail?.length > 0) ? 
                 <div class="container">
             
         <div class="row">
@@ -88,7 +66,7 @@ function Cart(prop)
                     </thead>
                     <tbody>
                     
-                    { cartdetail?.length > 0 && cartdetail.map((each, index)=>{
+                    { prop.cartdetail?.length > 0 && prop.cartdetail.map((each, index)=>{
                         
                        
                         return (   
@@ -111,7 +89,7 @@ function Cart(prop)
                             <button type="button" class="btn btn-danger" onClick={() => remove(each.cakeid)}>
                                 <span class="glyphicon glyphicon-remove"></span> Remove
                             </button></td>
-                            {/* <input type="hidden" id="subtot" value={each.price.reduce((a, b) => a + b, 0)} onBlur={subtotal}></input> */}
+                            {/* <input type="hidden" id="subtot"  value={each.price.reduce((a, b) => a + b, 0)} onBlur={subtotal}></input> */}
                         </tr>
                        )
                         
@@ -139,7 +117,7 @@ function Cart(prop)
                                 <Link to="/checkout">
                                     {
                                     prop.loginstatus?
-                            <button type="button" class="btn btn-success" onClick={checkout}>
+                            <button type="button" class="btn btn-success" >
                                 Checkout <span class="glyphicon glyphicon-play"></span>
                             </button>:<Link to="/login"><button className="btn btn-warning">Login For Add To Cart</button></Link>}
                             </Link>
@@ -157,8 +135,11 @@ function Cart(prop)
 }
  Cart = withRouter(Cart)
 export default connect(function(state,prop){
+    console.log("from cart page state",state)
     return{
         loginstatus:state?.isloggedin,
-        carttt:state?.cartdata
+        carttt:state?.cartdata,
+        cartdetail:state?.cart,
+        remove:state?.setcheckCart
     }
 })(Cart)

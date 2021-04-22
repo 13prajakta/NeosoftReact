@@ -59,7 +59,9 @@ import { Link ,withRouter} from "react-router-dom"
                     type:"LOGIN",
                     payload:response.data
                 })
+                
                 prop.history.push("/")
+                
             }
             else{
                 alert("invalid credentials")
@@ -99,5 +101,7 @@ import { Link ,withRouter} from "react-router-dom"
 
 Login = withRouter(Login)
 export default connect(function(state,prop){
-    
+    return{
+        cartdetail:state?.cart,
+    }
 })(Login)

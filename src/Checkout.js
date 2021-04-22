@@ -13,11 +13,9 @@ function Checkout(){
     var url = route.url
     var path =route.path
     console.log("......",route)
-    
+   
     return(
-        
-
-        
+ 
         <div className="row">
            
             <div className="col-4 aside">
