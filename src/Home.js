@@ -4,9 +4,12 @@ import Card from './Card';
 import Carousal from './Carousal';
 import {useEffect , useState} from "react";
 import { Link } from "react-router-dom"
+import * as ReactBootstrap from 'react-bootstrap'
+
 
 function Home(){
     let [cakes,setcakes]=useState([])
+    let [loading,setLoading]=useState(false)
     let allcakesapi="https://apibyashu.herokuapp.com/api/allcakes"
             useEffect(()=>{
                 axios({
@@ -17,7 +20,7 @@ function Home(){
                 setcakes(response.data.data)
             },(error)=>{
                 console.log("error from all cakes api",error)
-            })
+            });setLoading(true)
             },[])
             //console.log("data from all cakes",cakes)
     return (
@@ -25,12 +28,15 @@ function Home(){
         <div>
             <Carousal />
         <h2 className="alert alert-info" style={{marginTop:"20px"}}>All Cakes</h2>
+        
+        {loading ?
 	    <div className="row">
 		    { cakes?.length > 0 && cakes.map((each, index)=>{
 		          return (<Card cakedata={each} key={index}/>)
 		        })
 		    }
-	   </div>
+	   </div> :<ReactBootstrap.Spinner animation ="border"/>
+       }
 	</div>
     )
 }

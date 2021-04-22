@@ -82,14 +82,14 @@ import { Link ,withRouter} from "react-router-dom"
         <div className="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input onChange={getEmail} type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" ></input>
-            { user && <label>{user.email}</label>}
+            {/* { user && <label>{user.email}</label>} */}
             <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
         </div>
         
         <div className="form-group">
             <label for="exampleInputPassword1">Password</label>
             <input onChange={getPassword} type="password" className="form-control" id="exampleInputPassword1" />
-            { user && <label>{user.password}</label>}
+            {/* { user && <label>{user.password}</label>} */}
         </div>
         <div style={{color:"red"}}>
             <p>{error}</p>
