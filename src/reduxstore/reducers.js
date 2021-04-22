@@ -17,7 +17,7 @@ var demo= function(state={
             return state
         }
         case "CHECK_USER":{
-            console.log("Here we check user is presengt or not")
+            //console.log("Here we check user is presengt or not")
             state = {...state}
             state["isloggedin"] =true
             state["user"]=action.payload
@@ -25,18 +25,17 @@ var demo= function(state={
         }
 
         case "CARTDETAIL":{
-            console.log("Here we see cart details")
+            //console.log("Here we see cart details")
             state = {...state}
-            state["setcheckCart"]=false
+            //state["setcheckCart"]=true
             state["cart"]=action.payload
             return state
         }
 
-        case "REMOVECARTDETAIL":{
-            console.log("Here we remove cart details")
+        case "CARTUPDATE":{
+            //console.log("Here we remove cart details")
             state = {...state}
-            delete state["setcheckCart"]
-           delete state["cart"]
+            state["setcheckCart"]=action.payload
             return state
         }
         default :return state

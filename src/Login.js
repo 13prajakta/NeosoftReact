@@ -33,7 +33,7 @@ import { Link ,withRouter} from "react-router-dom"
         })
         user.password=event.target.value
     }
-
+    
     let login = function(){
         // if(user.email=="13psathwane@gmail.com" && user.password=="123" && user.name=='prajakta sathwane')
         // {
@@ -70,6 +70,9 @@ import { Link ,withRouter} from "react-router-dom"
             console.log("error from login api" , error)
         })
     }
+
+
+    
     return(
         <div>
        <h2 className="alert alert-info" style={{marginTop:"20px"}}>Login Here</h2>
@@ -91,7 +94,7 @@ import { Link ,withRouter} from "react-router-dom"
         <div style={{color:"red"}}>
             <p>{error}</p>
         </div>
-        <Link to="/signup"><a>Need help?Register</a></Link> <Link ><a class="text-danger">Forgot Password?</a></Link><br></br>
+        <Link to="/signup"><a>Need help?Register</a></Link> <Link to="/forgot"><a class="text-danger">Forgot Password?</a></Link><br></br>
         <button  className="btn btn-primary" onClick={login}>Login</button>
         </div> 
         </div> 

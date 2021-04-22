@@ -4,6 +4,7 @@ import Nav from './Navbar';
 import Signup from './Signup';
 import Login from './Login';
 import Home from './Home';
+import Forgot from './Forgot';
 import Carousal from './Carousal';
 import Card from './Card';
 import Cakes from './Data';
@@ -86,6 +87,7 @@ function App(props) {
         <Route path="/search" exact component={Search} />
         <Route path="/cart" exact component={Cart} />
         <Route path="/checkout" component={Checkout} />
+        <Route path="/forgot" component={Forgot} />
         <Route path="/Card/:cakeid" exact component={Detail} />
         <Route path="/*">
           <Redirect to=""> exact component={Error}</Redirect>

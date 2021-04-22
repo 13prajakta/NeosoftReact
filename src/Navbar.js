@@ -15,9 +15,10 @@ const history = useHistory();
     let[error,setError]=useState()
 
     
-    let [cartdetail,setCart]=useState([])
+    // let [cartdetail,setCart]=useState([])
     var token = localStorage.token
     useEffect(()=>{
+         
         let allcartdetailapi="https://apibyashu.herokuapp.com/api/cakecart"
         axios({
         url:allcartdetailapi,
@@ -27,18 +28,19 @@ const history = useHistory();
           } 
     }).then((response)=>{
         console.log("response from  cart details  api" ,response.data)
-        setCart(response.data.data)
+        //setCart(response.data.data)
          prop.dispatch({
             type:"CARTDETAIL",
             payload:response.data.data
         })
-        //prop.history.push("/checkout")
-        
-        //prop.history.push("/cart")
+        prop.dispatch({
+            type:"CARTUPDATE",
+            payload:true
+        })
     },(error)=>{
         console.log("error from cart details api",error)
     })
-    },[cartdetail,token])
+    },[prop.cartcheck,token])
 
 
     function searchChange(evt) {
@@ -73,7 +75,7 @@ const history = useHistory();
             
         }
     }
-    const leng = prop.cart?.length;
+    //const leng = prop.cart?.length;
     //const length = array.length;
     //console.log("length of array",array)
     //console.log("length of array",array)
@@ -104,7 +106,7 @@ const history = useHistory();
                 </Link> {/* <button onClick={search} class="btn btn-outline-success my-2 my-sm-0">Search</button> */}
                {
                prop.loginstatus ?<div>
-               <Link to="/cart"><button className="btn btn-warning"><FontAwesomeIcon icon={faShoppingCart} /> <span class="badge badge-light">{cartdetail?.length}</span></button></Link>
+               <Link to="/cart"><button className="btn btn-warning"><FontAwesomeIcon icon={faShoppingCart} /> <span class="badge badge-light">{prop.cart?.length}</span></button></Link>
                <button className="btn btn-danger" onClick={logout}>Logout</button> </div> 
                :  <Link to="/login"><button className="btn btn-success">Login</button></Link>
                }
@@ -118,10 +120,11 @@ const history = useHistory();
 }
 //mapstatetoprops
 export default connect(function(state,props){
-    console.log("............state initially" , state)
+    console.log("............navbar sttae" , state)
     return {
         user:state ?.user?.name,
         loginstatus:state?.isloggedin,
-        
+        cartcheck:state?.setcheckCart,
+        cart:state?.cart
     }
 })(Nav)

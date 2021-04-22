@@ -73,8 +73,13 @@ var apgn={
                 }).then((response)=>{
                     console.log("response from add to cart api" , response.data)
                     //alert(response.data)
-                    setAddcart(response.data.data)
+                    //setAddcart(response.data.data)
+                    prop.dispatch({
+                        type:"CARTUPDATE",
+                        payload:false
+                    })
                    prop.history.push("/cart");
+
                     
                 },(error)=>{
                     console.log("error from add to cart api" , error)
@@ -133,8 +138,9 @@ var apgn={
 
 
 export default connect(function(state,props){
-    //console.log("............state initially" , state)
+    console.log("...........from detail add to cart page" , state)
     return {
         loginstatus:state?.isloggedin,
+        cart:state?.cart  
     }
 })(Detail)

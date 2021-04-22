@@ -12,9 +12,10 @@ function Cart(prop)
         var cartremove={
             cakeid:cakeid,      
         }
-        console.log(" cake details" ,cartremove)
+       // console.log(" cake details" ,cartremove)
         var token = localStorage.token
         let cartapi="https://apibyashu.herokuapp.com/api/removecakefromcart"
+        
         axios({
             url:cartapi,
             method:"post",
@@ -27,7 +28,8 @@ function Cart(prop)
             //alert(response.data)
             //setCart(response.data.data)
             prop.dispatch({
-                type:"REMOVECARTDETAIL"
+                type:"CARTUPDATE",
+                payload:false
             })     
         },(error)=>{
             console.log("error from remove item from cart api" , error)
@@ -138,7 +140,6 @@ export default connect(function(state,prop){
     console.log("from cart page state",state)
     return{
         loginstatus:state?.isloggedin,
-        carttt:state?.cartdata,
         cartdetail:state?.cart,
         remove:state?.setcheckCart
     }
