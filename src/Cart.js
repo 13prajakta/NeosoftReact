@@ -3,10 +3,11 @@ import axios from 'axios'
 import {useEffect , useState} from "react";
 import { Link ,withRouter} from "react-router-dom"
 import { connect } from "react-redux";
+import * as ReactBootstrap from 'react-bootstrap'
 
 function Cart(prop)
 {
-    
+    let [loading,setLoading]=useState(false)
     function remove(cakeid){
      
         var cartremove={
@@ -32,7 +33,7 @@ function Cart(prop)
             })     
         },(error)=>{
             console.log("error from remove item from cart api" , error)
-        })
+        });setLoading(true)
     }
     
     // function checkout(){
@@ -49,6 +50,7 @@ function Cart(prop)
     // }
     
     return(
+        
          (prop.cartdetail?.length > 0) ? 
                 <div class="container">
             
@@ -70,7 +72,8 @@ function Cart(prop)
                     { prop.cartdetail?.length > 0 && prop.cartdetail.map((each, index)=>{
                         
                        
-                        return (   
+                        return (  
+                           
                     <tr>
                             <td class="col-sm-8 col-md-6">
                             <div class="media">
@@ -92,7 +95,8 @@ function Cart(prop)
                             </button></td>
                             {/* <input type="hidden" id="subtot"  value={each.price.reduce((a, b) => a + b, 0)} onBlur={subtotal}></input> */}
                         </tr>
-                       )
+                       
+                        )
                         
                     })
                 }  

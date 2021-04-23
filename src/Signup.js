@@ -32,16 +32,16 @@ class Signup extends React.Component{
             })
         }
         else{
-            let apiurl="https://apibyashu.herokuapp.com/api/register"
-            axios({
-                url:apiurl,
-                method:"post",
-                data:this.user
-            }).then((response)=>{
-                console.log("response from signup api" ,response.data)
-            },(error)=>{
-                console.log("error from signup api",error)
-            })
+            // let apiurl="https://apibyashu.herokuapp.com/api/register"
+            // axios({
+            //     url:apiurl,
+            //     method:"post",
+            //     data:this.user
+            // }).then((response)=>{
+            //     console.log("response from signup api" ,response.data)
+            // },(error)=>{
+            //     console.log("error from signup api",error)
+            // })
             
         }
         console.log("...user details" , this.user)
@@ -55,9 +55,9 @@ class Signup extends React.Component{
     render(){
         return(
             <div>
-                hey users {this.state.onLineUse}
+                {/* hey users {this.state.onLineUse}
                 <input onChange={this.getemail}></input>
-                <button onClick={this.goOnline}>Go button</button>
+                <button onClick={this.goOnline}>Go button</button> */}
                 
                 <h2 className="alert alert-info" style={{marginTop:"20px"}}>Signup Here</h2>
                 <div className="form-group">
