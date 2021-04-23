@@ -42,6 +42,7 @@ import { Link ,withRouter} from "react-router-dom"
     const [emailErr,setEmailErr]=useState("")
     const [passwordErr,setPasswordErr]=useState("")
     
+    const[respon,setRespons]=useState("")
     const[invalidErr,setInvalid]=useState("")
 
     const onSubmit=(e)=>{
@@ -73,17 +74,17 @@ import { Link ,withRouter} from "react-router-dom"
                     type:"LOGIN",
                     payload:response.data
                 })
-                
+                setRespons(response.data)
                 prop.history.push("/")
-                
+                alert("login success")
             }
             else{
                 alert("invalid credentials Please Try Again")
-                
-                
+                 
             }
         },(error)=>{
             console.log("error from login api" , error)
+            
         })
         }
     }
@@ -122,49 +123,7 @@ import { Link ,withRouter} from "react-router-dom"
         return isValid;
     }
 
-
-
-
-
-
-
-
-    // let login = function(){
-    //     // if(user.email=="13psathwane@gmail.com" && user.password=="123" && user.name=='prajakta sathwane')
-    //     // {
-    //     //     setError("login successfull")
-    //     // }
-    //     // else{
-    //     //     setError("Invalid Login")
-    //     // }
-    //     console.log("user istrying to login" ,user)
-    //     let loginapi="https://apibyashu.herokuapp.com/api/login"
-    //     axios({
-    //         url:loginapi,
-    //         method:"post",
-    //         data:user
-            
-    //     }).then((response)=>{
-    //         console.log("response from login api" , response.data)
-    //         // prop.informlogin("prajakta")
-    //         if(response.data.token){
-    //             localStorage.token= response.data.token
-    //             localStorage.email= response.data.email
-    //             prop.dispatch({
-    //                 type:"LOGIN",
-    //                 payload:response.data
-    //             })
-                
-    //             prop.history.push("/")
-                
-    //         }
-    //         else{
-    //             alert("invalid credentials")
-    //         }
-    //     },(error)=>{
-    //         console.log("error from login api" , error)
-    //     })
-    // }
+    console.log("login success",respon)
 
 
     
@@ -172,7 +131,8 @@ import { Link ,withRouter} from "react-router-dom"
         <div>
        <h2 className="alert alert-info" style={{marginTop:"20px"}}>Login Here</h2>
        <form onSubmit={onSubmit}>
-       
+          <div>{}</div>
+      
        <div className="row">
            <div className="col-md-3"></div>
        <div className="col-md-6">

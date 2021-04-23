@@ -54,7 +54,7 @@ function Forgot()
                         </div>
                       </div>
                       <div class="form-group">
-                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" onClick={forgoton}/>
+                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="button" onClick={forgoton}/>
                       </div>
                       <div class="form-group">
                       <Link to="/login">  <button name="recover-submit" class="btn btn-lg btn-danger btn-block"  type="button">Back To Login</button></Link>
