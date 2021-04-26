@@ -28,7 +28,7 @@ export default createStore(demo,middlewares)
 sagaMiddleware.run(LoginSaga)
 
 
-
+//reducer
 
 var demo= function(state={
     user:null
@@ -95,7 +95,7 @@ var demo= function(state={
 export default demo
 
 
-
+//saga.js
 import axios from "axios"
 import {call,put ,takeEvery} from "redux-saga/effects"
 
@@ -161,6 +161,9 @@ import { Link ,withRouter} from "react-router-dom"
     //     user.password=event.target.value
     // }
     
+//login.js
+
+
 
     //form validate
     const [email,setEmail]=useState("")
@@ -279,3 +282,5 @@ export default connect(function(state,prop){
         isloginerr:state?.isloginerr
     }
 })(Login)
+
+

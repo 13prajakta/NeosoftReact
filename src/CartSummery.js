@@ -4,7 +4,7 @@ function CartSummery(props)
     return(
         <div>
             <h2 style={{color:"#0c1241",fontStyle:"italic"}}>YOUR CART SUMMERY</h2>
-            { props.cart?.length > 0 && props.cart.map((each, index)=>{
+            { props.cart?.length > 0 ? props.cart.map((each, index)=>{
 		          return (<div class="media">
             <img src={each.image}  class="mr-3" alt="..." style={{width:"150px",height:"100px"}}/>
             <div class="media-body">
@@ -14,7 +14,7 @@ function CartSummery(props)
             </div>
             </div>
             )
-        })
+        }):<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>
     }
         </div>
     )

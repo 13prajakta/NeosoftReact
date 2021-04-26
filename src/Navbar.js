@@ -16,7 +16,17 @@ const history = useHistory();
 
     
     // let [cartdetail,setCart]=useState([])
-    var token = localStorage.token
+    //var token = localStorage.token
+    // var token = prop.tokenn
+    // var tokennn = localStorage.token
+    var token={}
+    if(prop.tokenn){
+        token = prop.tokenn
+    }else{
+        token=localStorage.token
+    }
+    console.log("login after login storage token",token)
+    //console.log("login local storage token",tokennn)
     useEffect(()=>{
          
         let allcartdetailapi="https://apibyashu.herokuapp.com/api/cakecart"
@@ -125,6 +135,7 @@ export default connect(function(state,props){
         user:state ?.user?.name,
         loginstatus:state?.isloggedin,
         cartcheck:state?.setcheckCart,
-        cart:state?.cart
+        cart:state?.cart,
+        tokenn:state?.user?.token
     }
 })(Nav)

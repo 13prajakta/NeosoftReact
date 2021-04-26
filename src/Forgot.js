@@ -5,30 +5,91 @@ import axios from 'axios'
 function Forgot()
 {
     
-    var[email , setUser] = useState({})
-    let getEmail=(event)=>{
-        setUser({
-            email:event.target.value,
-        })     
+  //   var[email , setUser] = useState({})
+  //   let getEmail=(event)=>{
+  //       setUser({
+  //           email:event.target.value,
+  //       })     
+  //   }
+
+  //   var forgottt={
+  //       email:email
+  //   }
+  //   console.log("forgot.......",forgottt)
+  //   let forgotapi="https://apibyashu.herokuapp.com/api/recoverpassword"
+  //  let forgoton=()=>{
+  //               axios({
+  //               url:forgotapi,
+  //               method:"post",
+  //               data:email
+  //           }).then((response)=>{
+  //               console.log("response from forgot password  api" ,response.data)
+  //               //setcakes(response.data.data)
+  //           },(error)=>{
+  //               console.log("error from forgot password api",error)
+  //           })
+  //           }
+
+
+
+  const [email,setEmail]=useState("")
+    const [emailErr,setEmailErr]=useState("")
+    const[user,setUser]=useState({})
+
+    const onSubmit=(e)=>{
+        e.preventDefault();
+        const isvalid=formValidaion();
+        var emaill={
+            email:email,
+        }
+        if(isvalid){
+            setEmail("");
+
+            console.log("user istrying to login" ,emaill)
+            let forgotapi="https://apibyashu.herokuapp.com/api/recoverpassword"
+        axios({
+          url:forgotapi,
+          method:"post",
+          data:emaill
+            
+        }).then((response)=>{
+            console.log("response from forgot api" , response.data)
+            // prop.informlogin("prajakta")
+            setUser(response.data)
+            
+        },(error)=>{
+            console.log("error from forgot api" , error)
+            
+        })
+        }
     }
 
-    var forgottt={
-        email:email
+
+    const formValidaion=()=>
+    {
+        const emailErr={};
+       
+        let isValid=true;
+        var emailreg=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+        if(email.trim().length <1)
+        {
+            emailErr.emailee="Email is required";
+            isValid=false;
+            setEmail("")
+        }else if(!emailreg.test(email))
+        {
+            emailErr.emailee="Email is invalid";
+            isValid=false;
+            setEmail("")
+        }
+
+        setEmailErr(emailErr);
+        return isValid;
     }
-    console.log("forgot.......",forgottt)
-    let forgotapi="https://apibyashu.herokuapp.com/api/recoverpassword"
-   let forgoton=()=>{
-                axios({
-                url:forgotapi,
-                method:"post",
-                data:email
-            }).then((response)=>{
-                console.log("response from forgot password  api" ,response.data)
-                //setcakes(response.data.data)
-            },(error)=>{
-                console.log("error from forgot password api",error)
-            })
-            }
+
+
+
 
     return(
         <div>
@@ -45,16 +106,22 @@ function Forgot()
                   <p>You can reset your password here.</p>
                   <div class="panel-body">
     
-                    <form id="register-form" role="form" autocomplete="off" class="form" method="post" >
-    
+                    <form onSubmit={onSubmit} >
+                      
+                      <div className="text-warning">{user.message}</div>
                       <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>
-                          <input id="email" name="email" placeholder="email address" class="form-control" onChange={getEmail} type="email" />
+                          <input  type="text" id="email" name="email" placeholder="email address" class="form-control" value={email} onChange={(e)=>{setEmail(e.target.value)}} />
                         </div>
                       </div>
+                      <div className="form-error">
+                {Object.keys(emailErr).map((key)=>{
+                    return <div className="form-error">{emailErr[key]}</div>
+                })}
+            </div>
                       <div class="form-group">
-                        <input name="recover-submit" class="btn btn-lg btn-primary btn-block" value="Reset Password" type="button" onClick={forgoton}/>
+                        <button class="btn btn-lg btn-primary btn-block">Reset Password</button>
                       </div>
                       <div class="form-group">
                       <Link to="/login">  <button name="recover-submit" class="btn btn-lg btn-danger btn-block"  type="button">Back To Login</button></Link>

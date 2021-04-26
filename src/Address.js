@@ -5,8 +5,8 @@ import axios from "axios"
 function Address(prop)
 {   
 
-    var price={}
-    var cake={}
+    var price=[]
+    var cake=[]
     const [name,setName]=useState("")
     const [phone,setPhone]=useState("")
     const [address,setAddress]=useState("")
@@ -38,6 +38,7 @@ function Address(prop)
             zip:zip,
             price:price,
             cake:cake
+            
         }
         console.log("addresss details",detail)
         var token = localStorage.token
@@ -142,7 +143,7 @@ function Address(prop)
         <h1>Address</h1>
         {/* {isaddress ? <div className="alert alert-success">Address Add Success</div> : <div></div>}
         {isaddErr ? <div></div> : <div className="alert alert-danger">Fail To Add Address</div>} */}
-        <form id="addressform" onSubmit={onSubmit}>
+        {prop.loginstatus? <form id="addressform" onSubmit={onSubmit}>
         <div class="form-group">
                 <label for="inputAddress">User Name</label>
                 <input type="text" name="name" class="form-control" id="inputAddress" value={name} onChange={(e)=>{setName(e.target.value)}} />
@@ -214,12 +215,14 @@ function Address(prop)
    
     <button  class="btn btn-primary">Continue To Checkout</button>
     </form>
+    :<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>}
 </div>
     )
 }
 export default connect(function(state,prop){
     return{
         cartdetail:state?.cart,
+        loginstatus:state?.isloggedin,
         isaddress:state?.isaddress,
         isaddErr:state?.isaddErr
     }

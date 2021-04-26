@@ -3,36 +3,31 @@ var demo= function(state={
 }, action){
     switch(action.type){
         case "LOGIN":{
+            console.log("login started")
+            state = {...state}
+            state["isfetching"] =true
+            return state
+        }
+
+        case "LOGIN_SUCCESS":{
             console.log("Here we have to write logic for login")
             state = {...state}
             state["isloggedin"] =true
             state["user"]=action.payload
+            state["isfetching"] =false
+            state["isloginerr"] =false
             return state
         }
-        case "ADDRESS":{
-            console.log("Here we have to write logic for address details")
-            state = {...state}
-            //state["isaddress"] =true
-            state["address"]=action.payload
-            return state
-        }
-        // case "ADDRESS_SUCCESS":{
-        //     console.log("Here we have to write logic for address success")
-        //     state = {...state}
-        //     state["isaddress"] =true
-        //     state["address"]=action.payload
-        //     state["isaddErr"] =false
-        //     return state
-        // }
 
-        // case "ADDRESS_FAILURE":{
-        //     console.log("Here we have to write logic for address failure")
-        //     state = {...state}
-        //     state["isaddress"] =false
-        //     state["isloggedin"] =false
-        //     state["isaddErr"] =true
-        //     return state
-        // }
+        case "LOGIN_FAILURE":{
+            console.log("Here we have to write logic for login failure")
+            state = {...state}
+            state["isloggedin"] =false
+            state["isfetching"] =false
+            state["isloginerr"] =true
+            return state
+        }
+
         case "LOGOUT":{
             state = {...state}
             localStorage.clear()

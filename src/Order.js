@@ -30,6 +30,8 @@ function Order(prop)
     return(
         
 <div class="container bootstrap snippets bootdeys">
+<h2 style={{color:"#0c1241",fontStyle:"italic"}}>ORDER DETAILS</h2>
+{prop.loginstatus ? 
 <div class="row">
   <div class="col-sm-12">
 	  	<div class="panel panel-default invoice" id="invoice">
@@ -88,11 +90,11 @@ function Order(prop)
 			      </thead>
 			      <tbody>
 			        <tr>
-			          <td class="text-center">1</td>
-			          <td>Flatter Theme</td>
-			          <td class="text-right">10</td>
-			          <td class="text-right">$18</td>
-			          <td class="text-right">$180</td>
+			          <td class="text-center"></td>
+			          <td></td>
+			          <td class="text-right"></td>
+			          <td class="text-right"></td>
+			          <td class="text-right"></td>
 			        </tr>
 			        
 			       </tbody>
@@ -108,10 +110,10 @@ function Order(prop)
 				<button class="btn btn-danger"><i class="fa fa-envelope-o"></i> Mail Invoice</button>
 			</div>
 			<div class="col-md-6 text-right pull-right invoice-total">
-					  <p>Subtotal : $1019</p>
-			          <p>Discount (10%) : $101 </p>
-			          <p>VAT (8%) : $73 </p>
-			          <p>Total : $991 </p>
+					  <p>Subtotal : </p>
+			          <p>Discount (10%) :  </p>
+			          <p>VAT (8%) :  </p>
+			          <p>Total :  </p>
 			</div>
 			</div>
 
@@ -119,12 +121,15 @@ function Order(prop)
 		</div>
 	</div>
 </div>
+:<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>
+}
 </div>
 
     )
 }
 export default connect(function(state,prop){
     return{
-        user:state?.user
+        user:state?.user,
+		loginstatus:state?.isloggedin,
     }
 })(Order)

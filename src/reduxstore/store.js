@@ -2,12 +2,12 @@ import {applyMiddleware, createStore} from "redux"
 import demo from "./reducers"
 import {logger} from"./middlewares"
 import createSaga from "redux-saga"
-import{AddressSaga} from "./sagas"
+import{LoginSaga} from "./sagas"
 
 
-//var sagaMiddleware=createSaga()
+var sagaMiddleware=createSaga()
 //var store =createStore(demo)
-var middlewares= applyMiddleware(logger)
+var middlewares= applyMiddleware(logger,sagaMiddleware)
 
 
 //var middlewares= applyMiddleware(FirdtMiddleware)
@@ -24,6 +24,5 @@ var middlewares= applyMiddleware(logger)
 // // //action are plane js objects with key known as type
 //  console.log("............after login match",store.getState())
 
-export default createStore(demo)
-//sagaMiddleware.run(AddressSaga)
-
+export default createStore(demo,middlewares)
+sagaMiddleware.run(LoginSaga)

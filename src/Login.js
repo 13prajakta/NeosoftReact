@@ -34,6 +34,9 @@ import { Link ,withRouter} from "react-router-dom"
     //     user.password=event.target.value
     // }
     
+//login.js
+
+
 
     //form validate
     const [email,setEmail]=useState("")
@@ -58,34 +61,10 @@ import { Link ,withRouter} from "react-router-dom"
 
 
             console.log("user istrying to login" ,user)
-        let loginapi="https://apibyashu.herokuapp.com/api/login"
-        axios({
-            url:loginapi,
-            method:"post",
-            data:user
-            
-        }).then((response)=>{
-            console.log("response from login api" , response.data)
-            // prop.informlogin("prajakta")
-            if(response.data.token){
-                localStorage.token= response.data.token
-                localStorage.email= response.data.email
-                prop.dispatch({
-                    type:"LOGIN",
-                    payload:response.data
-                })
-                setRespons(response.data)
-                prop.history.push("/")
-                alert("login success")
-            }
-            else{
-                alert("invalid credentials Please Try Again")
-                 
-            }
-        },(error)=>{
-            console.log("error from login api" , error)
-            
-        })
+            prop.dispatch({
+                type:"LOGIN",
+                payload:user
+            })
         }
     }
 
@@ -157,6 +136,9 @@ import { Link ,withRouter} from "react-router-dom"
                 })}
             </div>
         <Link to="/signup"><a>Need help?Register</a></Link> <Link to="/forgot"><a class="text-danger">Forgot Password?</a></Link><br></br>
+        {prop.isloggedin ? prop.history.push("/") : <div className=""></div>}{
+            prop.isloginerr ? <div className="alert alert-danger">invalid credentials</div> : <div></div>
+        }
         <button  className="btn btn-primary">Login</button>
         </div> 
         </div> 
@@ -169,5 +151,7 @@ Login = withRouter(Login)
 export default connect(function(state,prop){
     return{
         cartdetail:state?.cart,
+        isloggedin:state?.isloggedin,
+        isloginerr:state?.isloginerr
     }
 })(Login)

@@ -60,9 +60,10 @@ function App(props) {
   }).then((response)=>{
       console.log("response from details api" , response.data)
           props.dispatch({
-              type:"CHECK_USER",
+              type:"LOGIN_SUCCESS",
               payload:response.data
-          })         
+          })
+                  
   },(error)=>{
       console.log("error from detail api" , error)
   })
