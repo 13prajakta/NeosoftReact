@@ -109,6 +109,7 @@ function App(props) {
 }
 
 export default connect(function(state,props){
+  console.log("app js file state",state)
   return{
     user:state?.user
   }

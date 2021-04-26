@@ -1,12 +1,18 @@
 import {useEffect , useState} from "react";
+import { connect } from "react-redux"
+import axios from "axios"
 
-function Address()
+function Address(prop)
 {   
+
+    var price={}
+    var cake={}
     const [name,setName]=useState("")
     const [phone,setPhone]=useState("")
     const [address,setAddress]=useState("")
     const [city,setCity]=useState("")
     const [zip,setZip]=useState("")
+    //const [price,setPrice]=useState("")
 
     const [nameErr,setNameErr]=useState("")
     const [phoneErr,setPhoneErr]=useState("")
@@ -24,6 +30,37 @@ function Address()
         //     setCity("");
         //     setZip("");
         // }
+        var detail={
+            name:name,
+            phone:phone,
+            address:address,
+            city:city,
+            zip:zip,
+            price:price,
+            cake:cake
+        }
+        console.log("addresss details",detail)
+        var token = localStorage.token
+            
+                axios({
+                    url:"https://apibyashu.herokuapp.com/api/addcakeorder",
+                method:"post",
+                data:detail,
+                headers:{
+                    authtoken:token
+                  }
+            }).then((response)=>{
+                console.log("response from  address  api" ,response.data)
+                prop.dispatch({
+                    type:"ADDRESS",
+                    payload:response.data
+                })
+            },(error)=>{
+                console.log("error from address api",error)
+            })
+        
+    
+        
     }
 
 
@@ -103,6 +140,8 @@ function Address()
     return(
         <div>
         <h1>Address</h1>
+        {/* {isaddress ? <div className="alert alert-success">Address Add Success</div> : <div></div>}
+        {isaddErr ? <div></div> : <div className="alert alert-danger">Fail To Add Address</div>} */}
         <form id="addressform" onSubmit={onSubmit}>
         <div class="form-group">
                 <label for="inputAddress">User Name</label>
@@ -156,7 +195,21 @@ function Address()
                 })}
             </div>
                 </div>
-            
+                
+                { prop.cartdetail?.length > 0 && prop.cartdetail.map((each, index)=>{
+                   
+                       <div> <input type="hidden" value={price=(each.price)} /></div>
+                        
+                   
+                    })
+                }
+                 { prop.cartdetail?.length > 0 && prop.cartdetail.map((each, index)=>{
+                   
+                   
+                    <input type="text" value={cake=(each.name)} />
+               
+                })
+            }
             </div>
    
     <button  class="btn btn-primary">Continue To Checkout</button>
@@ -164,7 +217,13 @@ function Address()
 </div>
     )
 }
-export default Address
+export default connect(function(state,prop){
+    return{
+        cartdetail:state?.cart,
+        isaddress:state?.isaddress,
+        isaddErr:state?.isaddErr
+    }
+})(Address)
 
 
 
@@ -260,3 +319,6 @@ export default Address
 //     )
 // }
 // export default Address
+
+//price,name,address,city,phone,pincode,cake addcakeorder methode post
+//cakeorders post  headers only

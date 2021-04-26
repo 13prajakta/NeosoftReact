@@ -48,6 +48,7 @@ function Cart(prop)
     //     console.log("subtotal event >>>>>>>>>>>>>>>>>",event)
     //     // total:event.target.value
     // }
+    let sum = 0;
     
     return(
         
@@ -89,6 +90,7 @@ function Cart(prop)
                             </td>
                             <td class="col-sm-1 col-md-1 text-center"><strong >{each.price}/-</strong><input type="hidden" id="proprice" value={each.price}/></td>
                             <td class="col-sm-1 col-md-1 text-center"><strong>{each.price * each.quantity}/-</strong></td>
+                           <input type="hidden" value={sum= sum+(each.price*each.quantity)}/>
                             <td class="col-sm-1 col-md-1">
                             <button type="button" class="btn btn-danger" onClick={() => remove(each.cakeid)}>
                                 <span class="glyphicon glyphicon-remove"></span> Remove
@@ -106,7 +108,7 @@ function Cart(prop)
                             <td>   </td>
                             <td>   </td>
                             <td><h3>Total</h3></td>
-                            <td class="text-right"><h3><strong>Rs/-</strong></h3></td>
+                            <td class="text-right"><h5><strong>{sum} Rs/-</strong></h5></td>
                         </tr>
                         <tr>
                             <td>   </td>

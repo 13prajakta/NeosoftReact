@@ -9,6 +9,30 @@ var demo= function(state={
             state["user"]=action.payload
             return state
         }
+        case "ADDRESS":{
+            console.log("Here we have to write logic for address details")
+            state = {...state}
+            //state["isaddress"] =true
+            state["address"]=action.payload
+            return state
+        }
+        // case "ADDRESS_SUCCESS":{
+        //     console.log("Here we have to write logic for address success")
+        //     state = {...state}
+        //     state["isaddress"] =true
+        //     state["address"]=action.payload
+        //     state["isaddErr"] =false
+        //     return state
+        // }
+
+        // case "ADDRESS_FAILURE":{
+        //     console.log("Here we have to write logic for address failure")
+        //     state = {...state}
+        //     state["isaddress"] =false
+        //     state["isloggedin"] =false
+        //     state["isaddErr"] =true
+        //     return state
+        // }
         case "LOGOUT":{
             state = {...state}
             localStorage.clear()
