@@ -5,8 +5,7 @@ import axios from "axios"
 function Address(prop)
 {   
 
-    var price=[]
-    var cake=[]
+    
     const [name,setName]=useState("")
     const [phone,setPhone]=useState("")
     const [address,setAddress]=useState("")
@@ -30,14 +29,26 @@ function Address(prop)
         //     setCity("");
         //     setZip("");
         // }
+       
+        var cake=[...prop.cartdetail];
+    
+          //console.log("cake array",cake);
+        
+         // console.log("price array",price)
+         const price=prop.cartdetail.map(item => {
+            return <input item = {
+              item.price
+            } />
+          })
+        //   console.log("price array",price)
         var detail={
             name:name,
             phone:phone,
             address:address,
             city:city,
             zip:zip,
-            price:price,
-            cake:cake
+            cake:cake,
+            price:price
             
         }
         console.log("addresss details",detail)
@@ -197,7 +208,7 @@ function Address(prop)
             </div>
                 </div>
                 
-                { prop.cartdetail?.length > 0 && prop.cartdetail.map((each, index)=>{
+                {/* { prop.cartdetail?.length > 0 && prop.cartdetail.map((each, index)=>{
                    
                        <div> <input type="hidden" value={price=(each.price)} /></div>
                         
@@ -210,7 +221,7 @@ function Address(prop)
                     <input type="text" value={cake=(each.name)} />
                
                 })
-            }
+            } */}
             </div>
    
     <button  class="btn btn-primary">Continue To Checkout</button>

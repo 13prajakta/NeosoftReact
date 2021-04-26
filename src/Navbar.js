@@ -132,7 +132,7 @@ const history = useHistory();
 export default connect(function(state,props){
     console.log("............navbar sttae" , state)
     return {
-        user:state ?.user?.name,
+        user:state?.user?.name,
         loginstatus:state?.isloggedin,
         cartcheck:state?.setcheckCart,
         cart:state?.cart,
