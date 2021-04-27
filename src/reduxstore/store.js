@@ -2,7 +2,7 @@ import {applyMiddleware, createStore} from "redux"
 import demo from "./reducers"
 import {logger} from"./middlewares"
 import createSaga from "redux-saga"
-import{LoginSaga} from "./sagas"
+import{RootSaga} from "./sagas"
 
 
 var sagaMiddleware=createSaga()
@@ -25,4 +25,4 @@ var middlewares= applyMiddleware(logger,sagaMiddleware)
 //  console.log("............after login match",store.getState())
 
 export default createStore(demo,middlewares)
-sagaMiddleware.run(LoginSaga)
+sagaMiddleware.run(RootSaga)

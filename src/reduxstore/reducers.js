@@ -57,6 +57,35 @@ var demo= function(state={
             state["setcheckCart"]=action.payload
             return state
         }
+        case "ADDRESS":{
+            console.log("address started loading")
+            state = {...state}
+            state["isloading"] =true
+            return state
+        }
+        case "ADDRESS_SUCC":{
+            console.log("Here we address details success")
+            state = {...state}
+            state["isloading"] =false
+            state["isload"] =true
+            state["isloadErr"] =false
+            state["address"]=action.payload
+            return state
+        }
+        case "ADDRESS_FAILC":{
+            console.log("Here we address details fails")
+            state = {...state}
+            state["isloading"] =false
+            state["isload"] =false
+            state["isloadErr"] =true
+            return state
+        }
+        case "ORDERS":{
+            console.log("Here we orders details")
+            state = {...state}
+            state["orders"]=action.payload
+            return state
+        }
         default :return state
     }
 }

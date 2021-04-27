@@ -50,7 +50,7 @@ const history = useHistory();
     },(error)=>{
         console.log("error from cart details api",error)
     })
-    },[prop.cartcheck,token])
+    },[prop.cartcheck,token,prop.isloading])
 
 
     function searchChange(evt) {
@@ -136,6 +136,7 @@ export default connect(function(state,props){
         loginstatus:state?.isloggedin,
         cartcheck:state?.setcheckCart,
         cart:state?.cart,
-        tokenn:state?.user?.token
+        tokenn:state?.user?.token,
+        isloading:state?.isloading
     }
 })(Nav)

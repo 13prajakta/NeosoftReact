@@ -33,45 +33,28 @@ function Address(prop)
         var cake=[...prop.cartdetail];
     
           //console.log("cake array",cake);
-        
-         // console.log("price array",price)
+          let total = 0;
          const price=prop.cartdetail.map(item => {
-            return <input item = {
-              item.price
-            } />
+            
+            return  (total= total+(item.price))           
           })
-        //   console.log("price array",price)
+          
+         //total= total+(prop.cartdetail?.price)
+          //console.log("price array",total)
         var detail={
+            price:total,
             name:name,
             phone:phone,
             address:address,
             city:city,
-            zip:zip,
-            cake:cake,
-            price:price
-            
+            pincode:zip,
+            cakes:cake   
         }
         console.log("addresss details",detail)
-        var token = localStorage.token
-            
-                axios({
-                    url:"https://apibyashu.herokuapp.com/api/addcakeorder",
-                method:"post",
-                data:detail,
-                headers:{
-                    authtoken:token
-                  }
-            }).then((response)=>{
-                console.log("response from  address  api" ,response.data)
-                prop.dispatch({
-                    type:"ADDRESS",
-                    payload:response.data
-                })
-            },(error)=>{
-                console.log("error from address api",error)
-            })
-        
-    
+        prop.dispatch({
+            type:"ADDRESS",
+            payload:detail
+        })
         
     }
 
@@ -208,34 +191,23 @@ function Address(prop)
             </div>
                 </div>
                 
-                {/* { prop.cartdetail?.length > 0 && prop.cartdetail.map((each, index)=>{
-                   
-                       <div> <input type="hidden" value={price=(each.price)} /></div>
-                        
-                   
-                    })
-                }
-                 { prop.cartdetail?.length > 0 && prop.cartdetail.map((each, index)=>{
-                   
-                   
-                    <input type="text" value={cake=(each.name)} />
-               
-                })
-            } */}
             </div>
-   
-    <button  class="btn btn-primary">Continue To Checkout</button>
+ 
+    <button  class="btn btn-primary">Continue To Checkout</button> 
     </form>
     :<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>}
 </div>
     )
 }
 export default connect(function(state,prop){
+    console.log("address state",state)
     return{
         cartdetail:state?.cart,
         loginstatus:state?.isloggedin,
         isaddress:state?.isaddress,
-        isaddErr:state?.isaddErr
+        isaddErr:state?.isaddErr,
+        isload:state?.isload,
+        isloadErr:state?.isloadErr
     }
 })(Address)
 
