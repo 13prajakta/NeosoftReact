@@ -116,8 +116,8 @@ function Cart(prop)
                             <td>   </td>
                             <td>
                             <Link to="/">
-                            <button type="button" class="btn btn-default">
-                                <span class="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
+                            <button type="button" class="btn btn-warning">
+                                 Continue Shopping
                             </button></Link>
                             </td>
                             <td>

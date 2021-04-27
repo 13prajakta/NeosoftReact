@@ -39,7 +39,7 @@ function* AddressGenrator(action){
 console.log("result of address saga",result.data)
     if(result.data.cart?.length>0){
         yield put({type:'ADDRESS_SUCC',payload:result.data})
-        //localStorage.setItem('token', result.data.token);
+        localStorage.setItem('token', result.data.token);
     }
     else{
         yield put({type:'ADDRESS_FAILC'})

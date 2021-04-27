@@ -3,17 +3,22 @@ import axios from 'axios'
 import {useEffect , useState} from "react";
 import { connect } from "react-redux"
 import { Link } from 'react-router-dom';
+import { orderdetail } from "./reduxstore/thunk";
+import * as ReactBootstrap from 'react-bootstrap'
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"></link>
 
 function Order(prop)
 {
     let [orders,setOrders]=useState({})
+	let [loading,setLoading]=useState(false)
 	console.log("order details",orders)
     var today = new Date(),
     date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
     var token = localStorage.token
     let orderapi="https://apibyashu.herokuapp.com/api/cakeorders"
-    useEffect(()=>{   
+    useEffect(()=>{ 
+		//orderdetail();
+		
     axios({
             url:orderapi,
             method:"post",
@@ -30,7 +35,7 @@ function Order(prop)
 			})
         },(error)=>{
             console.log("error from order api" , error)
-        })
+        });setLoading(true)
     },[token])
 
 	
@@ -38,6 +43,8 @@ function Order(prop)
         
 <div class="container bootstrap snippets bootdeys">
 <h2 style={{color:"#0c1241",fontStyle:"italic"}}>ORDER DETAILS</h2>
+{loading ?
+<div>
 {prop.loginstatus ? 
 
 	<div class="container">
@@ -53,7 +60,7 @@ function Order(prop)
 						</tr>
 					</thead>
 					<tbody>
-					{ orders?.length > 0 && orders.map((each, index)=>{
+					{ prop.orders?.length > 0 && prop.orders.map((each, index)=>{
 		          return (
 					
 						<tr>
@@ -92,10 +99,20 @@ function Order(prop)
 </div>
 :<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>
 }
+</div>:<ReactBootstrap.Spinner animation ="border"/>
+       }
 </div>
 
     )
 }
+const mapDispatchToProps = dispatch => ({
+	orderdetail: () => dispatch(orderdetail())
+  });
+  
+//   export default connect(
+// 	mapDispatchToProps
+//   )(Order);
+
 export default connect(function(state,prop){
 	console.log("state of orders",state)
     return{

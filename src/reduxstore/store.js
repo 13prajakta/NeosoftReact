@@ -3,11 +3,12 @@ import demo from "./reducers"
 import {logger} from"./middlewares"
 import createSaga from "redux-saga"
 import{RootSaga} from "./sagas"
+import thunk from "redux-thunk";
 
 
 var sagaMiddleware=createSaga()
 //var store =createStore(demo)
-var middlewares= applyMiddleware(logger,sagaMiddleware)
+var middlewares= applyMiddleware(logger,sagaMiddleware,thunk)
 
 
 //var middlewares= applyMiddleware(FirdtMiddleware)
