@@ -139,7 +139,10 @@ function Address(prop)
         <h1>Address</h1>
         {/* {isaddress ? <div className="alert alert-success">Address Add Success</div> : <div></div>}
         {isaddErr ? <div></div> : <div className="alert alert-danger">Fail To Add Address</div>} */}
-        {prop.loginstatus? <form id="addressform" onSubmit={onSubmit}>
+        {prop.loginstatus? 
+        <div>
+            
+        <form id="addressform" onSubmit={onSubmit}>
         <div class="form-group">
                 <label for="inputAddress">User Name</label>
                 <input type="text" name="name" class="form-control" id="inputAddress" value={name} onChange={(e)=>{setName(e.target.value)}} />
@@ -198,6 +201,7 @@ function Address(prop)
     {prop.isloadErr ? <div className="alert alert-danger">ORDER FAIL TO PLACE</div> : null}
     <button  class="btn btn-primary">Continue To Checkout</button> 
     </form>
+    </div>
     :<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>}
 </div>
     )

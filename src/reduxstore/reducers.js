@@ -88,6 +88,18 @@ var demo= function(state={
             state["orders"]=action.payload
             return state
         }
+        case "CHECKROUTE":{
+            //console.log("Here we orders details")
+            state = {...state}
+            state["route"]=false
+            return state
+        }
+        case "ROUTESET":{
+            //console.log("Here we orders details")
+            state = {...state}
+            state["route"]=action.payload
+            return state
+        }
         default :return state
 
       

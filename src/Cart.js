@@ -38,12 +38,12 @@ function Cart(prop)
         });setLoading(true)
     }
     
-    // function checkout(){
-    //     prop.dispatch({
-    //         type:"CARTDETAIL",
-    //         payload:cartdetail
-    //     })
-    // }
+    function setroute(){
+        prop.dispatch({
+            type:"ROUTESET",
+            payload:true
+        })
+    }
   
     // let subtotal=(event)=>
     // {
@@ -51,6 +51,7 @@ function Cart(prop)
     //     // total:event.target.value
     // }
     let sum = 0;
+    
     
     return(
         
@@ -126,8 +127,8 @@ function Cart(prop)
                                 <Link to="/checkout">
                                     {
                                     prop.loginstatus?
-                            <button type="button" class="btn btn-success" >
-                                Checkout <span class="glyphicon glyphicon-play"></span>
+                            <button type="button" class="btn btn-success" onClick={setroute()}>
+                                Checkout 
                             </button>:<Link to="/login"><button className="btn btn-warning">Login For Add To Cart</button></Link>}
                             </Link>
                             </td>
