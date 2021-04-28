@@ -10,7 +10,7 @@ import * as ReactBootstrap from 'react-bootstrap'
 function Order(prop)
 {
     let [orders,setOrders]=useState({})
-	// let [loading,setLoading]=useState(false)
+	let [loading,setLoading]=useState(false)
 	console.log("order details",orders)
     var today = new Date(),
     date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
@@ -19,7 +19,7 @@ function Order(prop)
     useEffect(()=>{ 
 		
 
-	prop.dispatch(orderdetail())
+	prop.dispatch(orderdetail(loading))
 		
     // axios({
     //         url:orderapi,
@@ -103,7 +103,6 @@ function Order(prop)
 :<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>
 }
 </div>
-       
 </div>
 
     )
@@ -121,5 +120,6 @@ export default connect(function(state,prop){
 		loginstatus:state?.isloggedin,
 		orders:state?.orders,
 		isload:state?.isload,
+		rounder:state?.rounder
     }
 })(Order)
