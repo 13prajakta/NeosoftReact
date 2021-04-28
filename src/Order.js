@@ -10,32 +10,35 @@ import * as ReactBootstrap from 'react-bootstrap'
 function Order(prop)
 {
     let [orders,setOrders]=useState({})
-	let [loading,setLoading]=useState(false)
+	// let [loading,setLoading]=useState(false)
 	console.log("order details",orders)
     var today = new Date(),
     date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
     var token = localStorage.token
     let orderapi="https://apibyashu.herokuapp.com/api/cakeorders"
     useEffect(()=>{ 
-		//orderdetail();
 		
-    axios({
-            url:orderapi,
-            method:"post",
-            //data:cartremove,
-            headers:{
-                authtoken:token
-              } 
-        }).then((response)=>{
-            console.log("response from order api" , response.data)
-            setOrders(response.data.cakeorders)
-			prop.dispatch({
-				type:"ORDERS",
-				payload:response.data.cakeorders
-			})
-        },(error)=>{
-            console.log("error from order api" , error)
-        });setLoading(true)
+
+	prop.dispatch(orderdetail())
+		
+    // axios({
+    //         url:orderapi,
+    //         method:"post",
+    //         //data:cartremove,
+    //         headers:{
+    //             authtoken:token
+    //           } 
+    //     }).then((response)=>{
+    //         console.log("response from order api" , response.data)
+    //         setOrders(response.data.cakeorders)
+	// 		prop.dispatch({
+	// 			type:"ORDERS",
+	// 			payload:response.data.cakeorders
+	// 		})
+    //     },(error)=>{
+    //         console.log("error from order api" , error)
+    //     });setLoading(true)
+				
     },[token])
 
 	
@@ -43,7 +46,7 @@ function Order(prop)
         
 <div class="container bootstrap snippets bootdeys">
 <h2 style={{color:"#0c1241",fontStyle:"italic"}}>ORDER DETAILS</h2>
-{loading ?
+
 <div>
 {prop.loginstatus ? 
 
@@ -90,7 +93,7 @@ function Order(prop)
 					<tfoot>
 						
 						<tr>
-							<Link to="/"><td><a href="#" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a></td></Link>
+							<Link to="/"><td><button className="btn btn-sm btn-warning">Continue Shopping</button></td></Link>
 							<td colspan="2" class="hidden-xs"></td>
 							
 						</tr>
@@ -99,8 +102,8 @@ function Order(prop)
 </div>
 :<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>
 }
-</div>:<ReactBootstrap.Spinner animation ="border"/>
-       }
+</div>
+       
 </div>
 
     )

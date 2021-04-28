@@ -1,15 +1,23 @@
 import axios from 'axios'
-export let orderdetail = () => {
-    let url = "https://apibyashu.herokuapp.com/api/cakeorders"
+export function orderdetail(){
+    let orderapi = "https://apibyashu.herokuapp.com/api/cakeorders"
+    var token = localStorage.token
     return (dispatch) => {
-        dispatch()
-        return axios.get(url).header(localStorage.token).then(
-            (response) => {
-                dispatch({type:'ORDERS',payload:response.data})
-            },
-            (err) => {
-                console.log(err);
-            }
-        )
+        axios({
+                    url:orderapi,
+                    method:"post",
+                    //data:cartremove,
+                    headers:{
+                        authtoken:token
+                      } 
+                }).then((response)=>{
+                    console.log("response from order api" , response.data)
+            		dispatch({
+            			type:"ORDERS",
+            			payload:response.data.cakeorders
+            		})
+                },(error)=>{
+                    console.log("error from order api" , error)
+                })
     }
 }
