@@ -117,7 +117,7 @@ const history = useHistory();
                {
                prop.loginstatus ?<div>
                <Link to="/cart"><button className="btn btn-warning"><FontAwesomeIcon icon={faShoppingCart} /> <span class="badge badge-light">{prop.cart?.length}</span></button></Link>
-               {/* <Link to="/checkout/order"><button className="btn btn-info"><FontAwesomeIcon icon={faListAlt} />My Orders</button></Link> */}
+               <Link to="/myorder"><button className="btn btn-info"><FontAwesomeIcon icon={faListAlt} />My Orders</button></Link>
                <button className="btn btn-danger" onClick={logout}>Logout</button> </div> 
                :  <Link to="/login"><button className="btn btn-success">Login</button></Link>
                }

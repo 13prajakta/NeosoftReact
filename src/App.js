@@ -13,6 +13,7 @@ import Detail from './Detail';
 import Search from './Search';
 import Error from './error';
 import Cart from './Cart';
+import Myorder from './Myorder';
 import Checkout from './Checkout';
 import { useState } from 'react';
 import { BrowserRouter as Router , Route ,Redirect ,Switch} from 'react-router-dom';
@@ -93,6 +94,7 @@ function App(props) {
         <Route path="/cart" exact component={Cart} />
         <Route path="/checkout" component={Checkout} />
         <Route path="/forgot" component={Forgot} />
+        <Route path="/myorder" component={Myorder} />
         <Route path="/Card/:cakeid" exact component={Detail} />
         <Route path="/*">
           <Redirect to=""> exact component={Error}</Redirect>
