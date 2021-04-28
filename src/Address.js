@@ -194,7 +194,7 @@ function Address(prop)
                 </div>
                 
             </div>
-    {prop.isadd ?null: <div className="alert alert-success">ORDER PLACED SUCCESSFULY</div>}
+    {prop.isload ?<div className="alert alert-success">ORDER PLACED SUCCESSFULY</div>: null}
     {prop.isloadErr ? <div className="alert alert-danger">ORDER FAIL TO PLACE</div> : null}
     <button  class="btn btn-primary">Continue To Checkout</button> 
     </form>
