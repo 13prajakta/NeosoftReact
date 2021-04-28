@@ -3,9 +3,11 @@ import Cakes from './Data';
 import Card from './Card';
 import Carousal from './Carousal';
 import {useEffect , useState} from "react";
+import React from "react"
 import { Link } from "react-router-dom"
 import * as ReactBootstrap from 'react-bootstrap'
 
+//export const DiscountContext = React.createContext()
 
 function Home(){
     let [cakes,setcakes]=useState([])
@@ -32,8 +34,10 @@ function Home(){
         {loading ?
 	    <div className="row">
 		    { cakes?.length > 0 && cakes.map((each, index)=>{
-		          return (<Card cakedata={each} key={index}/>)
-		        })
+		        //   return <DiscountContext.provider value="only 2%">
+                return( <Card cakedata={each} key={index}/>)
+		        //</DiscountContext.provider>
+                })
 		    }
 	   </div> :<ReactBootstrap.Spinner animation ="border"/>
        }

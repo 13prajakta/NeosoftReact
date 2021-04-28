@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { Link } from "react-router-dom"
 import './image.css';
+import {DiscountContext} from "./Home"
 // import Cakes from './Data';
 // import Card from './Card';
-import {useEffect , useState} from "react";
+import {useEffect , useState ,useContext} from "react";
 
 var wei={
     width: "270px",
@@ -16,7 +17,8 @@ var foot={
 }
 function Card(props)
 {
-    
+    // const context = useContext(DiscountContext);
+    // console.log(">>>>>>>>>>>>>>>>>>>>>>>",context)
     return(
         <div>
             {/* <div style={foot}>
