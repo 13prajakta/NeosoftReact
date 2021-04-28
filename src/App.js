@@ -63,6 +63,10 @@ function App(props) {
               type:"LOGIN_SUCCESS",
               payload:response.data
           })
+          props.dispatch({
+            type:"ADDRESS_SUCC",
+            payload:response.data
+        })
                   
   },(error)=>{
       console.log("error from detail api" , error)

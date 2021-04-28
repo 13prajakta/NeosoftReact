@@ -14,7 +14,7 @@ function Order(prop)
 	console.log("order details",orders)
     var today = new Date(),
     date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
-    var token = localStorage.token
+    let token=localStorage.token
     let orderapi="https://apibyashu.herokuapp.com/api/cakeorders"
     useEffect(()=>{ 
 		
@@ -37,7 +37,7 @@ function Order(prop)
 	// 		})
     //     },(error)=>{
     //         console.log("error from order api" , error)
-    //     });setLoading(true)
+    //     })
 				
     },[token])
 
@@ -108,9 +108,7 @@ function Order(prop)
 
     )
 }
-const mapDispatchToProps = dispatch => ({
-	orderdetail: () => dispatch(orderdetail())
-  });
+
   
 //   export default connect(
 // 	mapDispatchToProps
@@ -121,6 +119,7 @@ export default connect(function(state,prop){
     return{
         user:state?.user,
 		loginstatus:state?.isloggedin,
-		orders:state?.orders
+		orders:state?.orders,
+		isload:state?.isload,
     }
 })(Order)

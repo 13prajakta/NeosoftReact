@@ -61,15 +61,17 @@ var demo= function(state={
             console.log("address started loading")
             state = {...state}
             state["isloading"] =true
+            state["isadd"]=true
             return state
         }
         case "ADDRESS_SUCC":{
             console.log("Here we address details success")
             state = {...state}
             state["isloading"] =false
+            state["address"]=action.payload
+            state["isadd"]=false
             state["isload"] =true
             state["isloadErr"] =false
-            state["address"]=action.payload
             return state
         }
         case "ADDRESS_FAILC":{

@@ -4,6 +4,8 @@ import {useEffect , useState} from "react";
 import { Link ,withRouter} from "react-router-dom"
 import { connect } from "react-redux";
 import * as ReactBootstrap from 'react-bootstrap'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function Cart(prop)
 {
@@ -64,7 +66,7 @@ function Cart(prop)
                             <th>Product</th> 
                             <th>Quantity</th>
                             <th class="text-center">Price</th>
-                            <th class="text-center">Total</th>
+                            <th class="text-center">Subtotal</th>
                             <th> </th>
                         </tr>
                     </thead>
@@ -93,7 +95,7 @@ function Cart(prop)
                            <input type="hidden" value={sum= sum+(each.price*each.quantity)}/>
                             <td class="col-sm-1 col-md-1">
                             <button type="button" class="btn btn-danger" onClick={() => remove(each.cakeid)}>
-                                <span class="glyphicon glyphicon-remove"></span> Remove
+                            <FontAwesomeIcon icon={faTrash} />
                             </button></td>
                             {/* <input type="hidden" id="subtot"  value={each.price.reduce((a, b) => a + b, 0)} onBlur={subtotal}></input> */}
                         </tr>

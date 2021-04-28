@@ -1,6 +1,7 @@
 import {useEffect , useState} from "react";
 import { connect } from "react-redux"
 import axios from "axios"
+import { Link } from 'react-router-dom';
 
 function Address(prop)
 {   
@@ -22,13 +23,13 @@ function Address(prop)
     const onSubmit=(e)=>{
         e.preventDefault();
         const isvalid=formValidaion();
-        // if(isvalid){
-        //     setName("");
-        //     setPhone("");
-        //     setAddress("");
-        //     setCity("");
-        //     setZip("");
-        // }
+        if(isvalid){
+            // setName("");
+            // setPhone("");
+            // setAddress("");
+            // setCity("");
+            // setZip("");
+        
        
         var cake=[...prop.cartdetail];
     
@@ -57,6 +58,7 @@ function Address(prop)
         })
         
     }
+}
 
 
     const formValidaion=()=>
@@ -192,21 +194,23 @@ function Address(prop)
                 </div>
                 
             </div>
- 
+    {prop.isadd ?null: <div className="alert alert-success">ORDER PLACED SUCCESSFULY</div>}
+    {prop.isloadErr ? <div className="alert alert-danger">ORDER FAIL TO PLACE</div> : null}
     <button  class="btn btn-primary">Continue To Checkout</button> 
     </form>
     :<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>}
 </div>
     )
-}
+} 
 export default connect(function(state,prop){
     console.log("address state",state)
     return{
         cartdetail:state?.cart,
         loginstatus:state?.isloggedin,
-        isaddress:state?.isaddress,
+        isaddress:state?.address,
         isaddErr:state?.isaddErr,
         isload:state?.isload,
+        isadd:state?.isadd,
         isloadErr:state?.isloadErr
     }
 })(Address)

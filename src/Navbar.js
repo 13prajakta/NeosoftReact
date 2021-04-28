@@ -50,7 +50,7 @@ const history = useHistory();
     },(error)=>{
         console.log("error from cart details api",error)
     })
-    },[prop.cartcheck,token,prop.isloading])
+    },[prop.cartcheck,token,prop.isloading,prop.loginstatus])
 
 
     function searchChange(evt) {
