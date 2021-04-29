@@ -133,6 +133,12 @@ function Address(prop)
         setZipErr(zipErr);
         return isValid;
     }
+
+    function myTime() {
+        setTimeout(()=>
+        { prop.history.push("/checkout/order") }
+        , 2000);
+      }
     
     return(
         <div>
@@ -197,8 +203,9 @@ function Address(prop)
                 </div>
                 
             </div>
-    {prop.isadd ?<div className="alert alert-success">ORDER PLACED SUCCESSFULY</div>: null}
+    {prop.isadd ?<div className="alert alert-success">ORDER PLACED SUCCESSFULY</div> : null}
     {prop.isloadErr ? <div className="alert alert-danger">ORDER FAIL TO PLACE</div> : null}
+    {prop.isadd ? myTime() : null}
     <button  class="btn btn-primary">Continue To Checkout</button> 
     </form>
     </div>

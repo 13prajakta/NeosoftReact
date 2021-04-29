@@ -6,10 +6,18 @@ import reportWebVitals from './reportWebVitals';
 import "jquery/dist/jquery.slim.min";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import "./reduxstore/store"
 import { Provider } from 'react-redux';
 import dmart from"./reduxstore/store";
+import axios from "axios"
+
+// axios.interceptors.request.use((config)=>{
+//   alert("in axios interceptor")
+//   var token=localStorage.token
+//   if(token){
+//     config.headers["authtoken"]
+//   }
+// })
 
 ReactDOM.render(
   <React.StrictMode>

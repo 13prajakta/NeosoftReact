@@ -1,3 +1,5 @@
+import { faSadCry, faSmile } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios"
 import {useState , useEffect} from "react"
 import { connect } from "react-redux"
@@ -104,17 +106,26 @@ import { Link ,withRouter} from "react-router-dom"
 
     console.log("login success",respon)
 
+    function myLogin() {
+        setTimeout(()=>
+        { prop.history.push("/") }
+        , 2000);
+      }
 
     
     return(
         <div>
        <h2 className="alert alert-info" style={{marginTop:"20px"}}>Login Here</h2>
        <form onSubmit={onSubmit}>
-          <div>{}</div>
+       
       
        <div className="row">
            <div className="col-md-3"></div>
        <div className="col-md-6">
+       {prop.isloggedin ? <div className="alert alert-success">Loging Successfull...!Happy Shopping <FontAwesomeIcon icon={faSmile} /> </div> : <div className=""></div>}{
+            prop.isloginerr ? <div className="alert alert-danger">invalid credentials <FontAwesomeIcon icon={faSadCry} /></div> : <div></div>
+        }
+        {prop.isloggedin ? myLogin() : null }
         <div className="form-group">
             <label for="exampleInputEmail1">Email address</label>
             <input  type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e)=>{setEmail(e.target.value)}}></input>
@@ -136,9 +147,7 @@ import { Link ,withRouter} from "react-router-dom"
                 })}
             </div>
         <Link to="/signup"><a>Need help?Register</a></Link> <Link to="/forgot"><a class="text-danger">Forgot Password?</a></Link><br></br>
-        {prop.isloggedin ? prop.history.push("/") : <div className=""></div>}{
-            prop.isloginerr ? <div className="alert alert-danger">invalid credentials</div> : <div></div>
-        }
+        
         <button  className="btn btn-primary">Login</button>
         </div> 
         </div> 

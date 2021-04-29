@@ -19,7 +19,7 @@ function Myorder(prop)
     useEffect(()=>{ 
 		
 
-	prop.dispatch(orderdetail(loading))
+	prop.dispatch(orderdetail())
 		
     // axios({
     //         url:orderapi,

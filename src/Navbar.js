@@ -112,12 +112,12 @@ const history = useHistory();
                 <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="text"  onChange={searchChange} placeholder="Search" aria-label="Search"></input>
                 <br></br><p className="text-danger">{error}</p>
-                <Link to={`/search?q=${searchdata.datasearch}`}> <button  class="btn btn-outline-primary my-2 my-sm-0" type="button" onClick={searchbut}><FontAwesomeIcon icon={faSearch} /></button>
+                <Link to={`/search?q=${searchdata.datasearch}`}> <button  class="btn btn-outline-primary my-2 my-sm-0" type="button" onClick={searchbut}><FontAwesomeIcon icon={faSearch} /></button>&nbsp;
                 </Link> {/* <button onClick={search} class="btn btn-outline-success my-2 my-sm-0">Search</button> */}
                {
                prop.loginstatus ?<div>
-               <Link to="/cart"><button className="btn btn-warning"><FontAwesomeIcon icon={faShoppingCart} /> <span class="badge badge-light">{prop.cart?.length}</span></button></Link>
-               <Link to="/myorder"><button className="btn btn-info"><FontAwesomeIcon icon={faListAlt} />My Orders</button></Link>
+               <Link to="/cart"><button className="btn btn-warning"><FontAwesomeIcon icon={faShoppingCart} /> <span class="badge badge-light">{prop.cart?.length}</span></button></Link>&nbsp;
+               <Link to="/myorder"><button className="btn btn-info"><FontAwesomeIcon icon={faListAlt} /> My Orders</button></Link>&nbsp;
                <button className="btn btn-danger" onClick={logout}>Logout</button> </div> 
                :  <Link to="/login"><button className="btn btn-success">Login</button></Link>
                }

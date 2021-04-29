@@ -1,3 +1,4 @@
+import React ,{ Suspense} from "react"
 import logo from './logo.svg';
 import './App.css';
 import Nav from './Navbar';
@@ -19,6 +20,8 @@ import { useState } from 'react';
 import { BrowserRouter as Router , Route ,Redirect ,Switch} from 'react-router-dom';
 import axios from "axios"
 import { connect } from "react-redux"
+
+var SuspendedAdmin = React.lazy(()=>import('./Admin'))
 
 var obj={
   name:'raju',
@@ -95,6 +98,11 @@ function App(props) {
         <Route path="/checkout" component={Checkout} />
         <Route path="/forgot" component={Forgot} />
         <Route path="/myorder" component={Myorder} />
+        <Route path="/admin" exact>
+          <Suspense fallback={<div>Loading......</div>}>
+            <SuspendedAdmin />
+          </Suspense>
+        </Route>
         <Route path="/Card/:cakeid" exact component={Detail} />
         <Route path="/*">
           <Redirect to=""> exact component={Error}</Redirect>

@@ -5,6 +5,8 @@ import { connect } from "react-redux"
 import { Link } from 'react-router-dom';
 import { orderdetail } from "./reduxstore/thunk";
 import * as ReactBootstrap from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSmile } from '@fortawesome/free-solid-svg-icons';
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"></link>
 
 function Order(prop)
@@ -44,16 +46,18 @@ function Order(prop)
 	
 	return(
         <div>
-        <h1>payment</h1>
+        <h1 style={{fontStyle:"italic"}}>Order</h1>
         {prop.loginstatus ?
         <div>
             
         <div className="alert alert-info">
-            THANK YOU FOR SHOPPING WITH US !! 
+            THANK YOU FOR SHOPPING WITH US........
+            HAPPY SHOPPING!!!! <FontAwesomeIcon icon={faSmile}/>
         </div>
         
         <div>
-        <Link to="/"><button className="btn btn-warning">Click To Continue Shopping</button></Link>
+        <Link to="/"><button className="btn btn-warning">Click To Continue Shopping</button></Link>&nbsp;&nbsp;
+        <Link to="/checkout/payment"><button className="btn btn-info">Next</button></Link>
         </div>
         </div>
         : <div className="alert alert-danger">Ooops!<b>Your Session Has Expired Please Login Again</b></div>}
