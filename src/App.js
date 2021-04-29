@@ -94,7 +94,9 @@ function App(props) {
         <Route path="/login"  exact component={Login} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/search" exact component={Search} />
-        <Route path="/cart" exact component={Cart} />
+        {props.loginstatus?
+        <Route path="/cart" exact component={Cart} />:null
+      }
         <Route path="/checkout" component={Checkout} />
         <Route path="/forgot" component={Forgot} />
         <Route path="/myorder" component={Myorder} />
@@ -126,6 +128,7 @@ function App(props) {
 export default connect(function(state,props){
   console.log("app js file state",state)
   return{
+    loginstatus:state?.isloggedin,
     user:state?.user
   }
 })(App)

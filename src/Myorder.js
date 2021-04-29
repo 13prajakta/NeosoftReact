@@ -5,6 +5,8 @@ import { connect } from "react-redux"
 import { Link } from 'react-router-dom';
 import { orderdetail } from "./reduxstore/thunk";
 import * as ReactBootstrap from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSadTear } from '@fortawesome/free-solid-svg-icons';
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"></link>
 
 function Myorder(prop)
@@ -51,7 +53,7 @@ function Myorder(prop)
 {prop.loginstatus ? 
 
 	<div class="container">
-		 	
+		 {prop.orders?.length>0	?
 	<table id="cart" class="table table-hover table-condensed">
     				<thead>
 						<tr>
@@ -100,7 +102,7 @@ function Myorder(prop)
 						</tr>
 					</tfoot>
 				</table>
-		
+		:<div className ="alert alert-info">NO ORDER DETAILS <FontAwesomeIcon icon={faSadTear}/> NO ORDER PLACED YET...</div>}
 </div>
 :<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>
 }

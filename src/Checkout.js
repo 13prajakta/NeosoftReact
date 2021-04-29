@@ -41,13 +41,9 @@ function Checkout(prop){
                 <Route exact path={path} component={CartSummery}></Route>
                 <Route exact path={path+"/address"} component={Address}></Route>
                 <Route exact path={path+"/payment"} component={Payment}></Route>
-                </div>
-                :prop.history.push("/")}
                 <Route exact path={path+"/order"} component={Order}></Route>
-                
-           
-            
-            
+                </div>
+                :prop.history.push("/")}     
         </div>
         
     )

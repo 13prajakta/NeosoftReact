@@ -117,7 +117,7 @@ const history = useHistory();
                {
                prop.loginstatus ?<div>
                <Link to="/cart"><button className="btn btn-warning"><FontAwesomeIcon icon={faShoppingCart} /> <span class="badge badge-light">{prop.cart?.length}</span></button></Link>&nbsp;
-               <Link to="/myorder"><button className="btn btn-info"><FontAwesomeIcon icon={faListAlt} /> My Orders</button></Link>&nbsp;
+               <Link to="/myorder"><button className="btn btn-info"><FontAwesomeIcon icon={faListAlt} /> My Orders <span class="badge badge-light">{prop.orders?.length}</span></button></Link>&nbsp;
                <button className="btn btn-danger" onClick={logout}>Logout</button> </div> 
                :  <Link to="/login"><button className="btn btn-success">Login</button></Link>
                }
@@ -138,6 +138,7 @@ export default connect(function(state,props){
         cartcheck:state?.setcheckCart,
         cart:state?.cart,
         tokenn:state?.user?.token,
-        isloading:state?.isloading
+        isloading:state?.isloading,
+        orders:state?.orders,
     }
 })(Nav)
