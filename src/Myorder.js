@@ -11,9 +11,7 @@ import { faSadTear } from '@fortawesome/free-solid-svg-icons';
 
 function Myorder(prop)
 {
-    let [orders,setOrders]=useState({})
-	let [loading,setLoading]=useState(false)
-	console.log("order details",orders)
+    
     var today = new Date(),
     date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
     let token=localStorage.token
@@ -21,7 +19,7 @@ function Myorder(prop)
     useEffect(()=>{ 
 		
 
-	prop.dispatch(orderdetail())
+	//prop.dispatch(orderdetail())
 		
     // axios({
     //         url:orderapi,

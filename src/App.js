@@ -14,15 +14,17 @@ import Detail from './Detail';
 import Search from './Search';
 import Error from './error';
 import Cart from './Cart';
-import Myorder from './Myorder';
+//import Myorder from './Myorder';
 import Checkout from './Checkout';
 import { useState } from 'react';
 import { BrowserRouter as Router , Route ,Redirect ,Switch} from 'react-router-dom';
 import axios from "axios"
 import { connect } from "react-redux"
 import * as ReactBootstrap from 'react-bootstrap'
+import { MDBSpinner } from 'mdbreact';
 
 var SuspendedAdmin = React.lazy(()=>import('./Admin'))
+var SuspendedMyorder = React.lazy(()=>import('./Myorder'))
 
 var obj={
   name:'raju',
@@ -100,10 +102,15 @@ function App(props) {
       }
         <Route path="/checkout" component={Checkout} />
         <Route path="/forgot" component={Forgot} />
-        <Route path="/myorder" component={Myorder} />
+        {/* <Route path="/myorder" component={Myorder} /> */}
         <Route path="/admin" exact>
-          <Suspense fallback={<div><ReactBootstrap.Spinner animation ="border"/></div>}>
+          <Suspense fallback={<div><ReactBootstrap.Spinner variant="primary" animation ="border"/></div>}>
             <SuspendedAdmin />
+          </Suspense>
+        </Route>
+        <Route path="/myorder" exact>
+          <Suspense fallback={<div><ReactBootstrap.Spinner variant="primary" animation ="border"/></div>}>
+            <SuspendedMyorder />
           </Suspense>
         </Route>
         <Route path="/Card/:cakeid" exact component={Detail} />

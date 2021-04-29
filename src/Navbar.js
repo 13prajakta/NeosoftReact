@@ -1,7 +1,7 @@
 import { Link ,useHistory} from "react-router-dom"
 import {useState , useEffect} from "react"
 import axios from 'axios'
-import Search from "./Search";
+import { orderdetail } from "./reduxstore/thunk";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListAlt, faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -28,7 +28,7 @@ const history = useHistory();
     console.log("login after login storage token",token)
     //console.log("login local storage token",tokennn)
     useEffect(()=>{
-         
+        prop.dispatch(orderdetail())
         let allcartdetailapi="https://apibyashu.herokuapp.com/api/cakecart"
         axios({
         url:allcartdetailapi,
