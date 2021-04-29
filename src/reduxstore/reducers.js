@@ -100,6 +100,7 @@ var demo= function(state={
             state["route"]=action.payload
             return state
         }
+        
         default :return state
 
       

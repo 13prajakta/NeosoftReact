@@ -14,7 +14,7 @@ export function orderdetail(){
                     console.log("response from order api" , response.data)
             		dispatch({
             			type:"ORDERS",
-            			payload:response.data.cakeorders
+            			payload:response.data.cakeorders,
             		})
                 },(error)=>{
                     console.log("error from order api" , error)

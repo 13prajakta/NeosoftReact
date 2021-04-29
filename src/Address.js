@@ -137,7 +137,7 @@ function Address(prop)
     function myTime() {
         setTimeout(()=>
         { prop.history.push("/checkout/order") }
-        , 2000);
+        , 1500);
       }
     
     return(

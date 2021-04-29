@@ -10,21 +10,155 @@ function Admin(){
             label: 'Image',
             field: 'image',
             sort: 'asc',
-            width: 150
+            width: 200
           },
           {
-            label: 'Detail',
-            field: 'detail',
+            label: 'Cake Id',
+            field: 'cakeid',
             sort: 'asc',
-            width: 270
+            width: 100
+          },
+          {
+            label: 'Name',
+            field: 'name',
+            sort: 'asc',
+            width: 200
+          },
+          {
+            label: 'Price',
+            field: 'price',
+            sort: 'asc',
+            width: 200
           },
          
         ],
         rows: [
           {
-              image:cakes.image,
-              detail:cakes.name
-          }
+            image: "Cedric Kelly",
+            name: "Senior Javascript Developer",
+            cakeid: "Edinburgh",
+            price: "2012/03/29",
+          },
+          {
+            image: "Airi Satou",
+            name: "Accountant",
+            cakeid: "Edinburgh",
+            price: "2008/11/28",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
+          {
+            image: "Brielle Williamson",
+            name: "Integration Specialist",
+            cakeid: "New York",
+            price: "2012/12/02",
+          },
         ]
       };
     
@@ -43,31 +177,28 @@ function Admin(){
                 console.log("error from all cakes api",error)
             });setLoading(true)
             },[])
-    return(
-        <div className="container">
-            { cakes?.length > 0 && cakes.map((each, index)=>{
-                return(
-        <div class="media">
-        <img src={each.image} class="align-self-center mr-3" alt="..." style={{width:"200px",height:"200px"}}/>
-        <div class="media-body">
-            <label>Cake Id</label>
-        <h5 class="mt-0">{each.cakeid}</h5>
-          <h5 class="mt-0">{each.name}</h5>
+    // return(
+    //     <div className="container">
+    //         { cakes?.length > 0 && cakes.map((each, index)=>{
+    //             return(
+    //     <div class="media">
+    //     <img src={each.image} class="align-self-center mr-3" alt="..." style={{width:"200px",height:"200px"}}/>
+    //     <div class="media-body">
+    //         <label>Cake Id</label>
+    //     <h5 class="mt-0">{each.cakeid}</h5>
+    //       <h5 class="mt-0">{each.name}</h5>
           
-          <p>{each.price} rs/-</p>
-        </div>
-      </div>)
-      })
-    }
-      </div>
-    )
+    //       <p>{each.price} rs/-</p>
+    //     </div>
+    //   </div>)
+    //   })
+    // }
+    //   </div>
+    // )
     return (
-        <MDBDataTable
-          striped
-          bordered
-          small
-          data={data}
-        />
-      );
+      <div className="App">
+        <MDBDataTable striped bordered small data={data} />
+      </div>
+    );
 }
 export default Admin

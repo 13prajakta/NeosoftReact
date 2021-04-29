@@ -51,7 +51,7 @@ function Myorder(prop)
 {prop.loginstatus ? 
 
 	<div class="container">
-		 
+		 	
 	<table id="cart" class="table table-hover table-condensed">
     				<thead>
 						<tr>
@@ -100,7 +100,7 @@ function Myorder(prop)
 						</tr>
 					</tfoot>
 				</table>
-				
+		
 </div>
 :<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>
 }
@@ -122,6 +122,5 @@ export default connect(function(state,prop){
 		loginstatus:state?.isloggedin,
 		orders:state?.orders,
 		isload:state?.isload,
-		rounder:state?.rounder
     }
 })(Myorder)

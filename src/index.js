@@ -9,6 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./reduxstore/store"
 import { Provider } from 'react-redux';
 import dmart from"./reduxstore/store";
+import * as ReactBootstrap from 'react-bootstrap'
 import axios from "axios"
 
 // axios.interceptors.request.use((config)=>{
