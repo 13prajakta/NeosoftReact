@@ -6,7 +6,13 @@ import { Link } from 'react-router-dom';
 function Address(prop)
 {   
 
-    
+    useEffect(()=>{
+        prop.dispatch({
+            type:"UPDATEADDRESS",
+            payload:false
+        },[localStorage.token])
+    })
+
     const [name,setName]=useState("")
     const [phone,setPhone]=useState("")
     const [address,setAddress]=useState("")
@@ -31,7 +37,7 @@ function Address(prop)
             // setZip("");
         
        
-        var cake=[...prop.cartdetail];
+        //var cake=[...prop.cartdetail];
     
           //console.log("cake array",cake);
           let total = 0;
@@ -48,15 +54,18 @@ function Address(prop)
             phone:phone,
             address:address,
             city:city,
-            pincode:zip,
-            cakes:cake   
+            pincode:zip,  
         }
         console.log("addresss details",detail)
         prop.dispatch({
-            type:"ADDRESS",
+            type:"PERMADD",
             payload:detail
         })
-        
+        alert("ADDRESS ADDED SUCCESSFULY")
+        prop.dispatch({
+            type:"UPDATEADDRESS",
+            payload:true
+        })
     }
 }
 
@@ -133,13 +142,13 @@ function Address(prop)
         setZipErr(zipErr);
         return isValid;
     }
-
-    function myTime() {
+    function myAddress()
+    {
         setTimeout(()=>
-        { prop.history.push("/checkout/order") }
-        , 1500);
-      }
-    
+        {
+            prop.history.push("/checkout/payment")
+        },1000)
+    }
     return(
         <div>
         <h1>Address</h1>
@@ -200,12 +209,10 @@ function Address(prop)
                     return <div className="form-error">{zipErr[key]}</div>
                 })}
             </div>
-                </div>
-                
+                </div>  
             </div>
-    {prop.isadd ?<div className="alert alert-success">ORDER PLACED SUCCESSFULY</div> : null}
-    {prop.isloadErr ? <div className="alert alert-danger">ORDER FAIL TO PLACE</div> : null}
-    {prop.isadd ? myTime() : null}
+            {prop.updateaddress? <div className="alert alert-success">ADDRESS ADDED SUCCESSFULY</div>:null}  
+              {prop.updateaddress? myAddress():null} 
     <button  class="btn btn-primary">Continue To Checkout</button> 
     </form>
     </div>
@@ -222,7 +229,9 @@ export default connect(function(state,prop){
         isaddErr:state?.isaddErr,
         isload:state?.isload,
         isadd:state?.isadd,
-        isloadErr:state?.isloadErr
+        isloadErr:state?.isloadErr,
+        updateaddress:state?.updateaddress,
+        isloading:state?.isloading
     }
 })(Address)
 

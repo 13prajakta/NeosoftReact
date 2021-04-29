@@ -29,6 +29,7 @@ const history = useHistory();
     //console.log("login local storage token",tokennn)
     useEffect(()=>{
         prop.dispatch(orderdetail())
+        
         let allcartdetailapi="https://apibyashu.herokuapp.com/api/cakecart"
         axios({
         url:allcartdetailapi,

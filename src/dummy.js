@@ -622,3 +622,13 @@
 
 // //price,name,address,city,phone,pincode,cake addcakeorder methode post
 // //cakeorders post  headers only
+
+// {prop.updateaddress? <div className="alert alert-success">ADDRESS ADDED SUCCESSFULY</div>:null}  
+//               {prop.updateaddress? myAddress():null} 
+//               function myAddress()
+//               {
+//                   setTimeout(()=>
+//                   {
+//                       prop.history.push("/checkout/payment")
+//                   },1500)
+//               }

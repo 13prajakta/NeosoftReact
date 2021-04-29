@@ -14,6 +14,7 @@ import Detail from './Detail';
 import Search from './Search';
 import Error from './error';
 import Cart from './Cart';
+import ErrorBoundary from './ErrorBoundary';
 //import Myorder from './Myorder';
 import Checkout from './Checkout';
 import { useState } from 'react';
@@ -88,6 +89,7 @@ function App(props) {
   return (
     
     <div className="App">
+      <ErrorBoundary>
       <Router>
         <Nav />
       <div >
@@ -129,7 +131,9 @@ function App(props) {
       {/* <Describe title="THREE TIRE CHOCOTRUFFLE CAKE" ingrident={ing} ingrident1={ing1} ingrident2={ing2} price="Rs. 2000/-" /> */}
       </div>
       </Router>
+      </ErrorBoundary>
     </div>
+    
   );
 }
 

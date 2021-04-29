@@ -11,37 +11,26 @@ import { faSmile } from '@fortawesome/free-solid-svg-icons';
 
 function Order(prop)
 {
-    let [orders,setOrders]=useState({})
-	let [loading,setLoading]=useState(false)
-	console.log("order details",orders)
     var today = new Date(),
     date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
     let token=localStorage.token
-    let orderapi="https://apibyashu.herokuapp.com/api/cakeorders"
-    useEffect(()=>{ 
-		
-
-	prop.dispatch(orderdetail(loading))
-		
-    // axios({
-    //         url:orderapi,
-    //         method:"post",
-    //         //data:cartremove,
-    //         headers:{
-    //             authtoken:token
-    //           } 
-    //     }).then((response)=>{
-    //         console.log("response from order api" , response.data)
-    //         setOrders(response.data.cakeorders)
-	// 		prop.dispatch({
-	// 			type:"ORDERS",
-	// 			payload:response.data.cakeorders
-	// 		})
-    //     },(error)=>{
-    //         console.log("error from order api" , error)
-    //     })
-				
-    },[token])
+    const detail={
+        price:prop.peradd?.price,
+        name:prop.peradd?.name,
+        phone:prop.peradd?.phone,
+        address:prop.peradd?.address,
+        city:prop.peradd?.city,
+        pincode:prop.peradd?.pincode,
+        cakes:prop.cartdetail  
+    }
+    console.log(">>>>>>>>>>>>>",detail)
+    const onClick=(e)=>{
+        e.preventDefault();
+        prop.dispatch({
+            type:"ADDRESS",
+            payload:detail
+        })
+    }
 
 	
 	return(
@@ -49,16 +38,22 @@ function Order(prop)
         <h1 style={{fontStyle:"italic"}}>Order</h1>
         {prop.loginstatus ?
         <div>
-            
+            {prop.cartdetail?.length>0 ?
+            <div>
         <div className="alert alert-info">
             THANK YOU FOR SHOPPING WITH US........
             HAPPY SHOPPING!!!! <FontAwesomeIcon icon={faSmile}/>
         </div>
         
         <div>
-        <Link to="/"><button className="btn btn-warning">Click To Continue Shopping</button></Link>&nbsp;&nbsp;
-        <Link to="/checkout/payment"><button className="btn btn-info">Next</button></Link>
+        {prop.cartdetail?.length>0 ?  <button className="btn btn-success" onClick={onClick}>Place Order</button>:
+        <Link to="/"><button className="btn btn-warning">Click To Continue Shopping</button></Link>}
         </div>
+        {prop.isadd ?<div className="alert alert-success">ORDER PLACED SUCCESSFULY</div>: null}
+    {prop.isloadErr ? <div className="alert alert-danger">ORDER FAIL TO PLACE</div> : null}
+        </div>
+        :<div className="alert alert-danger">Oops!! Your Cart Is Empty Plese Select Some cakes</div>}
+        {prop.cartdetail?.length<1 ?<Link to="/"><button className="btn btn-warning">Click To Continue Shopping</button></Link>:null}
         </div>
         : <div className="alert alert-danger">Ooops!<b>Your Session Has Expired Please Login Again</b></div>}
         </div>
@@ -77,6 +72,14 @@ export default connect(function(state,prop){
 		loginstatus:state?.isloggedin,
 		orders:state?.orders,
 		isload:state?.isload,
-		rounder:state?.rounder
+		rounder:state?.rounder,
+        cartdetail:state?.cart,
+        isaddress:state?.address,
+        isaddErr:state?.isaddErr,
+        isload:state?.isload,
+        isadd:state?.isadd,
+        isloadErr:state?.isloadErr,
+        peradd:state?.permantaddress,
+        updateaddress:state?.updateaddress
     }
 })(Order)

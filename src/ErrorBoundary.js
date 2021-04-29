@@ -24,7 +24,7 @@ class ErrorBoundary extends Component {
             )
         }
         else{
-            this.props.children
+            return this.props.children
         }
     }
 }

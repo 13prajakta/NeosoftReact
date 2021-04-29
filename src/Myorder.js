@@ -14,33 +14,7 @@ function Myorder(prop)
     
     var today = new Date(),
     date = today.getDate() + '-' + (today.getMonth() + 1) + '-' + today.getFullYear()
-    let token=localStorage.token
-    let orderapi="https://apibyashu.herokuapp.com/api/cakeorders"
-    useEffect(()=>{ 
-		
-
-	//prop.dispatch(orderdetail())
-		
-    // axios({
-    //         url:orderapi,
-    //         method:"post",
-    //         //data:cartremove,
-    //         headers:{
-    //             authtoken:token
-    //           } 
-    //     }).then((response)=>{
-    //         console.log("response from order api" , response.data)
-    //         setOrders(response.data.cakeorders)
-	// 		prop.dispatch({
-	// 			type:"ORDERS",
-	// 			payload:response.data.cakeorders
-	// 		})
-    //     },(error)=>{
-    //         console.log("error from order api" , error)
-    //     })
-				
-    },[token])
-
+    
 	
     return(
         

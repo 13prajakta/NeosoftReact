@@ -23,14 +23,15 @@ function Checkout(prop){
                 <ul>
                   <Link to={url}><li>Cart Summery</li></Link>
                   <Link to={url+"/address"}> <li>Address</li></Link>
-                  {prop.isload && prop.cartdetail?.length<1 ?
-                  <Link to={url+"/order"}> <li>Order</li></Link>
-                  : <Link to={url+"/order"} style={{pointerEvents: "none"}}> <li style={{backgroundColor:"grey"}}>Order</li></Link>
-                }  
-                 {prop.isload && prop.cartdetail?.length<1 ?
+                  {prop.updateaddress  ? 
                   <Link to={url+"/payment"}> <li>Payment</li></Link> 
                   : <Link to={url+"/payment"} style={{pointerEvents: "none"}}> <li style={{backgroundColor:"grey"}}>Payment</li></Link> 
                 }  
+                  {prop.updateaddress ?
+                  <Link to={url+"/order"}> <li>Order</li></Link>
+                  : <Link to={url+"/order"} style={{pointerEvents: "none"}}> <li style={{backgroundColor:"grey"}}>Order</li></Link>
+                }  
+                
                 </ul>
             </div>
             
@@ -42,8 +43,11 @@ function Checkout(prop){
                 <Route exact path={path+"/address"} component={Address}></Route>
                 <Route exact path={path+"/payment"} component={Payment}></Route>
                 <Route exact path={path+"/order"} component={Order}></Route>
-                </div>
-                :prop.history.push("/")}     
+                  </div>
+                :prop.history.push("/")}
+           
+            
+            
         </div>
         
     )
@@ -55,6 +59,8 @@ export default connect(function(state,props){
         cartdetail:state?.cart,
         isload:state?.isload,
         loginstatus:state?.isloggedin,
-        route:state?.route
+        route:state?.route,
+        updateaddress:state?.updateaddress,
+        updatepayment:state?.updatepayment
     }
 })(Checkout)

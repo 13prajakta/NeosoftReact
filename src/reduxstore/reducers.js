@@ -57,6 +57,25 @@ var demo= function(state={
             state["setcheckCart"]=action.payload
             return state
         }
+        case "UPDATEADDRESS":{
+            //console.log("Here we remove cart details")
+            state = {...state}
+            state["updateaddress"]=action.payload
+            return state
+        }
+        case "UPDATEPAYMENT":{
+            //console.log("Here we remove cart details")
+            state = {...state}
+            state["updatepayment"]=action.payload
+            return state
+        }
+        case "PERMADD":{
+            //console.log("Here we remove cart details")
+            state = {...state}
+            state["permantaddress"]=action.payload
+            state["updateaddress"]=false
+            return state
+        }
         case "ADDRESS":{
             console.log("address started loading")
             state = {...state}

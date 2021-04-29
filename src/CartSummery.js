@@ -1,4 +1,6 @@
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
+
 function CartSummery(props)
 {
     return(
@@ -18,7 +20,9 @@ function CartSummery(props)
             )
         }):<div className="alert alert-danger">Ooops!<b>Your Cart Is Empty Please Add Something Before You Process</b></div>
     }
+    {props.cartdetail?.length<1 ?<Link to="/"><button className="btn btn-warning">Click To Continue Shopping</button></Link>:null}
     </div>
+    
     : <div className="alert alert-danger">Ooops!<b>Your Session Has Expired Please Login Again</b></div>}
         </div>
     )
