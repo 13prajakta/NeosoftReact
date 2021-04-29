@@ -20,6 +20,7 @@ import { useState } from 'react';
 import { BrowserRouter as Router , Route ,Redirect ,Switch} from 'react-router-dom';
 import axios from "axios"
 import { connect } from "react-redux"
+import * as ReactBootstrap from 'react-bootstrap'
 
 var SuspendedAdmin = React.lazy(()=>import('./Admin'))
 
@@ -101,7 +102,7 @@ function App(props) {
         <Route path="/forgot" component={Forgot} />
         <Route path="/myorder" component={Myorder} />
         <Route path="/admin" exact>
-          <Suspense fallback={<div>Loading......</div>}>
+          <Suspense fallback={<div><ReactBootstrap.Spinner animation ="border"/></div>}>
             <SuspendedAdmin />
           </Suspense>
         </Route>
