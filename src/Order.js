@@ -52,7 +52,7 @@ function Order(prop)
         {prop.isadd ?<div className="alert alert-success">ORDER PLACED SUCCESSFULY</div>: null}
     {prop.isloadErr ? <div className="alert alert-danger">ORDER FAIL TO PLACE</div> : null}
         </div>
-        :<div className="alert alert-danger">Oops!! Your Cart Is Empty Plese Select Some cakes</div>}
+        :<div className="alert alert-info">CURRENTLY YOUR CART IS EMPTY ...SHOP MORE TO PLACE ORDER AGAIN</div>}
         {prop.cartdetail?.length<1 ?<Link to="/"><button className="btn btn-warning">Click To Continue Shopping</button></Link>:null}
         </div>
         : <div className="alert alert-danger">Ooops!<b>Your Session Has Expired Please Login Again</b></div>}
