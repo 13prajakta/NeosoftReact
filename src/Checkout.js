@@ -23,11 +23,11 @@ function Checkout(prop){
                 <ul>
                   <Link to={url}><li>Cart Summery</li></Link>
                   <Link to={url+"/address"}> <li>Address</li></Link>
-                  {prop.updateaddress  ? 
+                  {prop.updateaside  ? 
                   <Link to={url+"/payment"}> <li>Payment</li></Link> 
                   : <Link to={url+"/payment"} style={{pointerEvents: "none"}}> <li style={{backgroundColor:"grey"}}>Payment</li></Link> 
                 }  
-                  {prop.updateaddress ?
+                  {prop.updateaside ?
                   <Link to={url+"/order"}> <li>Order</li></Link>
                   : <Link to={url+"/order"} style={{pointerEvents: "none"}}> <li style={{backgroundColor:"grey"}}>Order</li></Link>
                 }  
@@ -61,6 +61,6 @@ export default connect(function(state,props){
         loginstatus:state?.isloggedin,
         route:state?.route,
         updateaddress:state?.updateaddress,
-        updatepayment:state?.updatepayment
+        updateaside:state?.updateaside
     }
 })(Checkout)

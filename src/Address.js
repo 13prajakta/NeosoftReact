@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 
 function Address(prop)
 {   
-
-    useEffect(()=>{
-        prop.dispatch({
-            type:"UPDATEADDRESS",
-            payload:false
-        },[localStorage.token])
-    })
+    let [updateaddress,setUpdateAddress]=useState(true)
+    // useEffect(()=>{
+    //     prop.dispatch({
+    //         type:"UPDATEADDRESS",
+    //         payload:false
+    //     },[localStorage.token])
+    // })
 
     const [name,setName]=useState("")
     const [phone,setPhone]=useState("")
@@ -60,11 +60,12 @@ function Address(prop)
         prop.dispatch({
             type:"PERMADD",
             payload:detail
-        })
+        });setUpdateAddress(false);
         alert("ADDRESS ADDED SUCCESSFULY")
+        
         prop.dispatch({
             type:"UPDATEADDRESS",
-            payload:true
+            payload:updateaddress
         })
     }
 }
@@ -146,7 +147,15 @@ function Address(prop)
     {
         setTimeout(()=>
         {
-            prop.history.push("/checkout/payment")
+            prop.history.push("/checkout/payment");
+            prop.dispatch({
+                type:"UPDATEADDRESS",
+                payload:false
+            })
+            prop.dispatch({
+                type:"UPDATEASIDE",
+                payload:true
+            })
         },1000)
     }
     return(

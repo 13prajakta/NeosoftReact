@@ -39,6 +39,7 @@ function* AddressGenrator(action){
 console.log("result of address saga",result.data)
     if(result.data.messageg=="order placed"){
         yield put({type:'ADDRESS_SUCC',payload:result.data})
+        yield put({type:'UPDATEASIDE',payload:false})
         //localStorage.setItem('token', result.data.token);
     }
     else{

@@ -63,10 +63,10 @@ var demo= function(state={
             state["updateaddress"]=action.payload
             return state
         }
-        case "UPDATEPAYMENT":{
+        case "UPDATEASIDE":{
             //console.log("Here we remove cart details")
             state = {...state}
-            state["updatepayment"]=action.payload
+            state["updateaside"]=action.payload
             return state
         }
         case "PERMADD":{
