@@ -8,7 +8,8 @@ function Admin(){
   //console.log("admin",cakes);
 
   let [loading,setLoading]=useState(false)
-  let allcakesapi="https://apifromashu.herokuapp.com/api/allcakes"
+  let allcakesapi=process.env.REACT_APP_BASE_URL+"api/allcakes"
+  
           useEffect(()=>{
               axios({
               url:allcakesapi,

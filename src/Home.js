@@ -12,7 +12,7 @@ import * as ReactBootstrap from 'react-bootstrap'
 function Home(){
     let [cakes,setcakes]=useState([])
     let [loading,setLoading]=useState(false)
-    let allcakesapi="https://apifromashu.herokuapp.com/api/allcakes"
+    let allcakesapi=process.env.REACT_APP_BASE_URL+"/api/allcakes"
             useEffect(()=>{
                 axios({
                 url:allcakesapi,

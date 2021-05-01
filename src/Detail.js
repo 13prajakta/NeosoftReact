@@ -62,7 +62,7 @@ var apgn={
                 }
                 console.log("added cake details" ,cartdetail)
                 var token = localStorage.token
-                let cartapi="https://apifromashu.herokuapp.com/api/addcaketocart"
+                let cartapi=process.env.REACT_APP_BASE_URL+"/api/addcaketocart"
                 axios({
                     url:cartapi,
                     method:"post",

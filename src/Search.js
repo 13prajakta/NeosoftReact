@@ -14,8 +14,8 @@ function Search()
     let cakename=name.q
 
        let [cakesearch,setCakes]=useState([])
-  
-        let apisearchurl="https://apifromashu.herokuapp.com/api/searchcakes?q="+cakename
+       let apisearchurl=process.env.REACT_APP_BASE_URL+"/api/searchcakes?q="+cakename
+       
         useEffect(() => {
             axios({
                 url:apisearchurl,

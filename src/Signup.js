@@ -65,7 +65,7 @@ class Signup extends React.Component{
         if(this.handleValidation()){
            
            console.log("signup validation after submittt",this.state.fields)
-           let apiurl="https://apifromashu.herokuapp.com/api/register"
+           let apiurl=process.env.REACT_APP_BASE_URL+"/api/register"
             axios({
                 url:apiurl,
                 method:"post",

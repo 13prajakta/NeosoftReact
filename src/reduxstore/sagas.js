@@ -25,9 +25,10 @@ function* LoginGenrator(action){
 function address(action)
 {
     var token = localStorage.token
+    let address=process.env.REACT_APP_BASE_URL+"/api/addcakeorder"
     return axios({
         method:"post",
-        url:"https://apifromashu.herokuapp.com/api/addcakeorder",
+        url:address,
         data:action.payload,
         headers:{
             authtoken:token

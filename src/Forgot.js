@@ -46,7 +46,8 @@ function Forgot()
             setEmail("");
 
             console.log("user istrying to login" ,emaill)
-            let forgotapi="https://apifromashu.herokuapp.com/api/recoverpassword"
+            let forgotapi=process.env.REACT_APP_BASE_URL+"/api/recoverpassword"
+            
         axios({
           url:forgotapi,
           method:"post",

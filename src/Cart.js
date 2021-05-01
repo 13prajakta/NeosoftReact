@@ -17,7 +17,7 @@ function Cart(prop)
         }
        // console.log(" cake details" ,cartremove)
         var token = localStorage.token
-        let cartapi="https://apifromashu.herokuapp.com/api/removecakefromcart"
+        let cartapi=process.env.REACT_APP_BASE_URL+"/api/removecakefromcart"
         axios({
             url:cartapi,
             method:"post",
