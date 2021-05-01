@@ -16,7 +16,7 @@ function Forgot()
   //       email:email
   //   }
   //   console.log("forgot.......",forgottt)
-  //   let forgotapi="https://apibyashu.herokuapp.com/api/recoverpassword"
+  //   let forgotapi="https://apifromashu.herokuapp.com/api/recoverpassword"
   //  let forgoton=()=>{
   //               axios({
   //               url:forgotapi,
@@ -46,7 +46,7 @@ function Forgot()
             setEmail("");
 
             console.log("user istrying to login" ,emaill)
-            let forgotapi="https://apibyashu.herokuapp.com/api/recoverpassword"
+            let forgotapi="https://apifromashu.herokuapp.com/api/recoverpassword"
         axios({
           url:forgotapi,
           method:"post",

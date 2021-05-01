@@ -60,7 +60,7 @@ function App(props) {
     var token = localStorage.token
     console.log("mean user is already logged in")
     axios({
-      url:'https://apibyashu.herokuapp.com/api/getuserdetails',
+      url:'https://apifromashu.herokuapp.com/api/getuserdetails',
       method:"get",
       headers:{
         authtoken:token

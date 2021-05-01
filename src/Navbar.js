@@ -30,7 +30,7 @@ const history = useHistory();
     useEffect(()=>{
         prop.dispatch(orderdetail())
         
-        let allcartdetailapi="https://apibyashu.herokuapp.com/api/cakecart"
+        let allcartdetailapi="https://apifromashu.herokuapp.com/api/cakecart"
         axios({
         url:allcartdetailapi,
         method:"post",

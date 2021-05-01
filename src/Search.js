@@ -15,7 +15,7 @@ function Search()
 
        let [cakesearch,setCakes]=useState([])
   
-        let apisearchurl="https://apibyashu.herokuapp.com/api/searchcakes?q="+cakename
+        let apisearchurl="https://apifromashu.herokuapp.com/api/searchcakes?q="+cakename
         useEffect(() => {
             axios({
                 url:apisearchurl,

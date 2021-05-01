@@ -1,6 +1,6 @@
 import axios from 'axios'
 export function orderdetail(){
-    let orderapi = "https://apibyashu.herokuapp.com/api/cakeorders"
+    let orderapi = "https://apifromashu.herokuapp.com/api/cakeorders"
     var token = localStorage.token
     return (dispatch) => {
         axios({

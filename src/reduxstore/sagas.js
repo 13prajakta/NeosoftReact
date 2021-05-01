@@ -5,7 +5,7 @@ function login(action)
 {
     return axios({
         method:"post",
-        url:"https://apibyashu.herokuapp.com/api/login",
+        url:"https://apifromashu.herokuapp.com/api/login",
         data:action.payload
     })
 }
@@ -27,7 +27,7 @@ function address(action)
     var token = localStorage.token
     return axios({
         method:"post",
-        url:"https://apibyashu.herokuapp.com/api/addcakeorder",
+        url:"https://apifromashu.herokuapp.com/api/addcakeorder",
         data:action.payload,
         headers:{
             authtoken:token

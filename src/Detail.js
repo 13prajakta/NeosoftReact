@@ -38,7 +38,7 @@ var apgn={
     
     // console.log("cake api details",allcakedetailapi)
             useEffect(()=>{
-                let allcakedetailapi="https://apibyashu.herokuapp.com/api/cake/"+params.cakeid
+                let allcakedetailapi="https://apifromashu.herokuapp.com/api/cake/"+params.cakeid
                 axios({
                 url:allcakedetailapi,
                 method:"get"
@@ -62,7 +62,7 @@ var apgn={
                 }
                 console.log("added cake details" ,cartdetail)
                 var token = localStorage.token
-                let cartapi="https://apibyashu.herokuapp.com/api/addcaketocart"
+                let cartapi="https://apifromashu.herokuapp.com/api/addcaketocart"
                 axios({
                     url:cartapi,
                     method:"post",
