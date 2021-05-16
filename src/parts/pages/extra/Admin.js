@@ -1,7 +1,7 @@
 import axios from 'axios'
 import {useEffect , useState} from "react";
 import { MDBDataTable } from 'mdbreact';
-import './pagination.css';
+import '../../../css/pagination.css';
 import ReactPaginate from "react-paginate"
 function Admin(){
     let [cakes,setcakes]=useState([])

@@ -1,9 +1,9 @@
-import './order.css'
+import '../../../css/order.css'
 import axios from 'axios'
 import {useEffect , useState} from "react";
 import { connect } from "react-redux"
 import { Link } from 'react-router-dom';
-import { orderdetail } from "./reduxstore/thunk";
+import { orderdetail } from "../../../reduxstore/thunk";
 import * as ReactBootstrap from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSadTear } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +18,7 @@ function Myorder(prop)
 	
     return(
         
-<div class="container bootstrap snippets bootdeys">
+<div class="container bootstrap snippets bootdeys"  style={{marginBottom:"50px",marginTop:"50px"}}>
 <h2 style={{color:"#0c1241",fontStyle:"italic"}}>ORDER DETAILS</h2>
 
 <div>
@@ -26,7 +26,7 @@ function Myorder(prop)
 
 	<div class="container">
 		 {prop.orders?.length>0	?
-	<table id="cart" class="table table-hover table-condensed">
+	<table id="cart" class="table table-hover table-condensed" >
     				<thead>
 						<tr>
 							<th style={{width:"50%"}}>Sr.no</th>

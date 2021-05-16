@@ -5,7 +5,7 @@ import Address from './Address';
 import Payment from './Payment';
 import Order from './Order';
 import { Link ,useHistory,useRouteMatch} from "react-router-dom"
-import './style.css';
+import '../../../css/style.css';
 
 
 
@@ -17,7 +17,7 @@ function Checkout(prop){
    
     return(
  
-        <div className="row">
+        <div className="row" style={{marginBottom:"30px"}}>
            
             <div className="col-4 aside">
                 <ul>

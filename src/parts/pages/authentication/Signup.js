@@ -61,6 +61,9 @@ class Signup extends React.Component{
     
    contactSubmit(e){
         e.preventDefault();
+        let fields = this.state.fields;
+        let errors = {};
+        let formIsSubmit = true;
 
         if(this.handleValidation()){
            
@@ -72,10 +75,14 @@ class Signup extends React.Component{
                 data:this.state.fields
             }).then((response)=>{
                 console.log("response from signup api" ,response.data)
+                alert(response.data.message);
+                if(response.data.message!="User Already Exists"){
+                    alert("Go To Your Email and Verify The Link For Login")
+                    this.props.history.push("/login")
+                }
             },(error)=>{
                 console.log("error from signup api",error)
             })
-            alert("Form submitted");
             
         }else{
            //alert("Form has errors.")
@@ -135,7 +142,7 @@ class Signup extends React.Component{
     
     render(){
         return(
-            <div>
+            <div style={{marginBottom:"50px"}}>
                 {/* hey users {this.state.onLineUse}
                 <input onChange={this.getemail}></input>
                 <button onClick={this.goOnline}>Go button</button> */}

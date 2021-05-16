@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
-import Cakes from './Data';
-import Card from './Card';
+// import Cakes from '../parts/pages/home/Data';
+// import Card from '../parts/pages/cart/Card';
 import {useEffect , useState} from "react";
 import { connect } from "react-redux";
 import {useParams,Link} from "react-router-dom";

@@ -114,7 +114,7 @@ import { Link ,withRouter} from "react-router-dom"
 
     
     return(
-        <div>
+        <div style={{marginBottom:"50px"}}>
        <h2 className="alert alert-info" style={{marginTop:"20px"}}>Login Here</h2>
        <form onSubmit={onSubmit}>
        

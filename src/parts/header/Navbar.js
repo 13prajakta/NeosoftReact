@@ -1,7 +1,7 @@
 import { Link ,useHistory} from "react-router-dom"
 import {useState , useEffect} from "react"
 import axios from 'axios'
-import { orderdetail } from "./reduxstore/thunk";
+import { orderdetail } from "../../reduxstore/thunk";
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListAlt, faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";

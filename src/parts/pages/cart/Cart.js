@@ -58,7 +58,7 @@ function Cart(prop)
          (prop.cartdetail?.length > 0) ? 
                 <div class="container">
             
-        <div class="row">
+        <div class="row" style={{marginBottom:"100px"}}>
         
             <div class="col-sm-12 col-md-10 col-md-offset-1">
                 <table class="table table-hover">
@@ -139,7 +139,7 @@ function Cart(prop)
             
         </div>
        
-    </div> : <div style={{marginTop:"30px"}}><p className="alert alert-danger">Your Cart empty</p></div>
+    </div> : <div style={{marginTop:"100px",marginBottom:"100px"}}><p className="alert alert-danger">Your Cart empty</p></div>
     
     )
 }

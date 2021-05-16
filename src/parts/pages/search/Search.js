@@ -1,6 +1,6 @@
 import axios from 'axios'
-import Cakes from './Data';
-import Card from './Card';
+import Cakes from '../home/Data';
+import Card from '../cart/Card';
 import {useEffect , useState} from "react";
 import { useLocation } from "react-router-dom";
 import queryString from 'query-string'
@@ -31,7 +31,7 @@ function Search()
     return (
         
             
-        <div>
+        <div style={{marginBottom:"50px"}}>
             <h3 className="alert alert-info">Search Result</h3>
             <div className="row">
             { cakesearch?.length > 0 ? cakesearch.map((each, index)=>{

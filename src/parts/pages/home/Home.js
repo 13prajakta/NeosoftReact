@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Cakes from './Data';
-import Card from './Card';
+import Card from '../cart/Card';
 import Carousal from './Carousal';
 import {useEffect , useState} from "react";
 import React from "react"

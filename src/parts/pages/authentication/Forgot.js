@@ -95,10 +95,11 @@ function Forgot()
     return(
         <div>
             <div class="form-gap"></div>
-            <div class="container">
+            <div className="alert-info">{user.message}</div>
+            <div class="container" style={{marginBottom:"50px",marginTop:"40px"}}>
 	<div class="row">
         <div className="col-md-4"></div>
-		<div class="col-md-4 col-md-offset-4">
+		<div class="col-md-4 col-md-offset-4" style={{border:"2px solid #f9d200",padding:"30px",borderRadius:"20px",backgroundColor: "#D3D3D3"}}>
             <div class="panel panel-default">
               <div class="panel-body">
                 <div class="text-center">
@@ -109,7 +110,7 @@ function Forgot()
     
                     <form onSubmit={onSubmit} >
                       
-                      <div className="text-warning">{user.message}</div>
+                      
                       <div class="form-group">
                         <div class="input-group">
                           <span class="input-group-addon"><i class="glyphicon glyphicon-envelope color-blue"></i></span>

@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { Link } from "react-router-dom"
-import './image.css';
-import {DiscountContext} from "./Home"
+import '../../../css/image.css';
+import {DiscountContext} from "../home/Home"
 // import Cakes from './Data';
 // import Card from './Card';
 import {useEffect , useState ,useContext} from "react";

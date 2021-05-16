@@ -15,8 +15,12 @@ function CartSummery(props)
                 <h4 class="mt-0" style={{color:"#b9384f"}}>{each.name}</h4>
                 <p class="mt-0" style={{color:"#f4c55c",fontWeight:"bold"}}>quantity : {each.quantity}</p>
                 <p style={{color:"#329e72",fontWeight:"bold"}}>Price : {each.price}/-</p>
+               
             </div>
+            
             </div>
+           
+            
             )
         }):<div className="alert alert-danger">Ooops!<b>Your Cart Is Empty Please Add Something Before You Process</b></div>
     }
@@ -24,6 +28,7 @@ function CartSummery(props)
     </div>
     
     : <div className="alert alert-danger">Ooops!<b>Your Session Has Expired Please Login Again</b></div>}
+        <Link to="/checkout/address"> <button className="btn btn-warning">Proceed For Address</button></Link>
         </div>
     )
 }

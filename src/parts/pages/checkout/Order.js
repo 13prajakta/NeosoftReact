@@ -1,9 +1,9 @@
-import './order.css'
+import '../../../css/order.css'
 import axios from 'axios'
 import {useEffect , useState} from "react";
 import { connect } from "react-redux"
 import { Link } from 'react-router-dom';
-import { orderdetail } from "./reduxstore/thunk";
+import { orderdetail } from "../../../reduxstore/thunk";
 import * as ReactBootstrap from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSmile } from '@fortawesome/free-solid-svg-icons';
