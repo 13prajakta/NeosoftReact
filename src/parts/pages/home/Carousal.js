@@ -1,14 +1,13 @@
-var Carousal1="slide.jpg";
-var Carousal2="slide2.jpg";
-var Carousal3="slide3.jpg";
-var Carousal4="slide4.jpg";
+var Carousal1 = "slide.jpg";
+var Carousal2 = "slide2.jpg";
+var Carousal3 = "slide3.jpg";
+var Carousal4 = "slide4.jpg";
 
-var ss={
-    height: "500px",
-};
+// var ss = {
+//     height: "500px",
+// };
 
-function Carousal()
-{
+function Carousal() {
     return (
         <div>
             <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
@@ -19,16 +18,16 @@ function Carousal()
                     <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
                 </ol>
                 <div className="carousel-inner">
-                    <div className="carousel-item active">
-                    <img style={ss} src={Carousal1} className="d-block w-100" alt="..." />                    </div>
+                    <div className="carousel-item active carousall">
+                        <img src={Carousal1} className="d-block w-100" alt="..." />                    </div>
                     <div className="carousel-item">
-                    <img  style={ss} src={Carousal2} className="d-block w-100" alt="..." />
+                        <img src={Carousal2} className="d-block w-100" alt="..." />
                     </div>
                     <div className="carousel-item">
-                    <img style={ss} src={Carousal3} className="d-block w-100" alt="..." />
+                        <img src={Carousal3} className="d-block w-100" alt="..." />
                     </div>
                     <div className="carousel-item">
-                    <img style={ss} src={Carousal4} className="d-block w-100" alt="..." />
+                        <img src={Carousal4} className="d-block w-100" alt="..." />
                     </div>
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -39,7 +38,7 @@ function Carousal()
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                     <span className="sr-only">Next</span>
                 </a>
-                </div>
+            </div>
         </div>
     )
 }

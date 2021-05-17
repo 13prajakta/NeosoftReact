@@ -1,11 +1,10 @@
-import {useEffect , useState} from "react";
+import { useEffect, useState } from "react";
 import { connect } from "react-redux"
 import axios from "axios"
 import { Link } from 'react-router-dom';
 
-function Address(prop)
-{   
-    let [updateaddress,setUpdateAddress]=useState(true)
+function Address(prop) {
+    let [updateaddress, setUpdateAddress] = useState(true)
     // useEffect(()=>{
     //     prop.dispatch({
     //         type:"UPDATEADDRESS",
@@ -13,126 +12,116 @@ function Address(prop)
     //     },[localStorage.token])
     // })
 
-    const [name,setName]=useState("")
-    const [phone,setPhone]=useState("")
-    const [address,setAddress]=useState("")
-    const [city,setCity]=useState("")
-    const [zip,setZip]=useState("")
+    const [name, setName] = useState("")
+    const [phone, setPhone] = useState("")
+    const [address, setAddress] = useState("")
+    const [city, setCity] = useState("")
+    const [zip, setZip] = useState("")
     //const [price,setPrice]=useState("")
 
-    const [nameErr,setNameErr]=useState("")
-    const [phoneErr,setPhoneErr]=useState("")
-    const [addressErr,setAddressErr]=useState("")
-    const [cityErr,setCityErr]=useState("")
-    const [zipErr,setZipErr]=useState("")
+    const [nameErr, setNameErr] = useState("")
+    const [phoneErr, setPhoneErr] = useState("")
+    const [addressErr, setAddressErr] = useState("")
+    const [cityErr, setCityErr] = useState("")
+    const [zipErr, setZipErr] = useState("")
 
-    const onSubmit=(e)=>{
+    const onSubmit = (e) => {
         e.preventDefault();
-        const isvalid=formValidaion();
-        if(isvalid){
+        const isvalid = formValidaion();
+        if (isvalid) {
             // setName("");
             // setPhone("");
             // setAddress("");
             // setCity("");
             // setZip("");
-        
-       
-        //var cake=[...prop.cartdetail];
-    
-          //console.log("cake array",cake);
-          let total = 0;
-         const price=prop.cartdetail.map(item => {
-            
-            return  (total= total+(item.price))           
-          })
-          
-         //total= total+(prop.cartdetail?.price)
-          //console.log("price array",total)
-        var detail={
-            price:total,
-            name:name,
-            phone:phone,
-            address:address,
-            city:city,
-            pincode:zip,  
+
+
+            //var cake=[...prop.cartdetail];
+
+            //console.log("cake array",cake);
+            let total = 0;
+            const price = prop.cartdetail.map(item => {
+
+                return (total = total + (item.price))
+            })
+
+            //total= total+(prop.cartdetail?.price)
+            //console.log("price array",total)
+            var detail = {
+                price: total,
+                name: name,
+                phone: phone,
+                address: address,
+                city: city,
+                pincode: zip,
+            }
+            console.log("addresss details", detail)
+            prop.dispatch({
+                type: "PERMADD",
+                payload: detail
+            }); setUpdateAddress(false);
+            alert("ADDRESS ADDED SUCCESSFULY")
+
+            prop.dispatch({
+                type: "UPDATEADDRESS",
+                payload: updateaddress
+            })
         }
-        console.log("addresss details",detail)
-        prop.dispatch({
-            type:"PERMADD",
-            payload:detail
-        });setUpdateAddress(false);
-        alert("ADDRESS ADDED SUCCESSFULY")
-        
-        prop.dispatch({
-            type:"UPDATEADDRESS",
-            payload:updateaddress
-        })
     }
-}
 
 
-    const formValidaion=()=>
-    {
-        const nameErr={};
-        const phoneErr={};
-        const addressErr={};
-        const cityErr={};
-        const zipErr={};
-        let isValid=true;
-        var namereg=/^[a-zA-Z_ ]*$/;
-        var phonereg=/^[0-9]/;
+    const formValidaion = () => {
+        const nameErr = {};
+        const phoneErr = {};
+        const addressErr = {};
+        const cityErr = {};
+        const zipErr = {};
+        let isValid = true;
+        var namereg = /^[a-zA-Z_ ]*$/;
+        var phonereg = /^[0-9]/;
 
-        if(name.trim().length <3)
-        {
-            nameErr.nameee="Required & Name Should Be greater Than 3 Character";
-            isValid=false;
+        if (name.trim().length < 3) {
+            nameErr.nameee = "Required & Name Should Be greater Than 3 Character";
+            isValid = false;
             setName("")
-        }else if(!namereg.test(name))
-        {
-            nameErr.nameee="Only Charachters allowed";
-            isValid=false;
+        } else if (!namereg.test(name)) {
+            nameErr.nameee = "Only Charachters allowed";
+            isValid = false;
             setName("")
         }
 
-        if(!phonereg.test(phone))
-        {
-            phoneErr.nameee="phone number is invalid";
-            isValid=false;
+        if (!phonereg.test(phone)) {
+            phoneErr.nameee = "phone number is invalid";
+            isValid = false;
             setPhone("");
-        }else if(phone.trim().length >10)
-        {
-            phoneErr.nameee="phone number should not greater than 10";
-            isValid=false;
+        } else if (phone.trim().length > 10) {
+            phoneErr.nameee = "phone number should not greater than 10";
+            isValid = false;
             setPhone("");
         }
 
 
-        if(address.trim().length <1)
-        {
-            addressErr.nameee="address is required";
-            isValid=false;
+        if (address.trim().length < 1) {
+            addressErr.nameee = "address is required";
+            isValid = false;
             setAddress("");
         }
-        if(city.trim().length <1)
-        {
-            cityErr.nameee="city is required";
-            isValid=false;
+        if (city.trim().length < 1) {
+            cityErr.nameee = "city is required";
+            isValid = false;
             setCity("");
         }
-        if(zip.trim().length <1)
-        {
-            zipErr.nameee="zip is required";
-            isValid=false;
+        if (zip.trim().length < 1) {
+            zipErr.nameee = "zip is required";
+            isValid = false;
             setZip("");
-        }else if(zip.trim().length >6)
-        {
-            zipErr.nameee="zip should not greater than 6 number";
-            isValid=false;
+        } else if (zip.trim().length > 6) {
+            zipErr.nameee = "zip should not greater than 6 number";
+            isValid = false;
             setZip("");
-        }else if(!phonereg.test(zip))
-        {
-            zipErr.nameee="Only Numbers are allowed";
-            isValid=false;
+        } else if (!phonereg.test(zip)) {
+            zipErr.nameee = "Only Numbers are allowed";
+            isValid = false;
             setZip("");
         }
 
@@ -143,104 +132,102 @@ function Address(prop)
         setZipErr(zipErr);
         return isValid;
     }
-    function myAddress()
-    {
-        setTimeout(()=>
-        {
+    function myAddress() {
+        setTimeout(() => {
             prop.history.push("/checkout/payment");
             prop.dispatch({
-                type:"UPDATEADDRESS",
-                payload:false
+                type: "UPDATEADDRESS",
+                payload: false
             })
             prop.dispatch({
-                type:"UPDATEASIDE",
-                payload:true
+                type: "UPDATEASIDE",
+                payload: true
             })
-        },1000)
+        }, 1000)
     }
-    return(
+    return (
         <div>
-        <h1>Address</h1>
-        {/* {isaddress ? <div className="alert alert-success">Address Add Success</div> : <div></div>}
+            <h1>Address</h1>
+            {/* {isaddress ? <div className="alert alert-success">Address Add Success</div> : <div></div>}
         {isaddErr ? <div></div> : <div className="alert alert-danger">Fail To Add Address</div>} */}
-        {prop.loginstatus? 
-        <div>
-            
-        <form id="addressform" onSubmit={onSubmit}>
-        <div class="form-group">
-                <label for="inputAddress">User Name</label>
-                <input type="text" name="name" class="form-control" id="inputAddress" value={name} onChange={(e)=>{setName(e.target.value)}} />
-            </div>
-            <div className="form-error">
-                {Object.keys(nameErr).map((key)=>{
-                    return <div className="form-error">{nameErr[key]}</div>
-                })}
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-12">
-                <label for="inputEmail4">Phone</label>
-                <input name="phone" type="text" class="form-control" id="inputEmail4" value={phone} onChange={(e)=>{setPhone(e.target.value)}} />
+            {prop.loginstatus ?
+                <div>
+
+                    <form id="addressform" onSubmit={onSubmit}>
+                        <div class="form-group">
+                            <label for="inputAddress">User Name</label>
+                            <input type="text" name="name" class="form-control" id="inputAddress" value={name} onChange={(e) => { setName(e.target.value) }} />
+                        </div>
+                        <div className="form-error">
+                            {Object.keys(nameErr).map((key) => {
+                                return <div className="form-error">{nameErr[key]}</div>
+                            })}
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail4">Phone</label>
+                                <input name="phone" type="text" class="form-control" id="inputEmail4" value={phone} onChange={(e) => { setPhone(e.target.value) }} />
+                            </div>
+                        </div>
+                        <div className="form-error">
+                            {Object.keys(phoneErr).map((key) => {
+                                return <div className="form-error">{phoneErr[key]}</div>
+                            })}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="inputAddress2">Address </label>
+                            <input name="address" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" value={address} onChange={(e) => { setAddress(e.target.value) }} />
+                        </div>
+                        <div className="form-error">
+                            {Object.keys(addressErr).map((key) => {
+                                return <div className="form-error">{addressErr[key]}</div>
+                            })}
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="inputCity">City</label>
+                                <input name="city" type="text" class="form-control" id="inputCity" value={city} onChange={(e) => { setCity(e.target.value) }} />
+                                <br></br>
+                                <div className="form-error">
+                                    {Object.keys(cityErr).map((key) => {
+                                        return <div className="form-error">{cityErr[key]}</div>
+                                    })}
+                                </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="inputZip">Zip</label>
+                                <input name="zip" type="text" class="form-control" id="inputZip" value={zip} onChange={(e) => { setZip(e.target.value) }} />
+                                <br></br>
+                                <div className="form-error">
+                                    {Object.keys(zipErr).map((key) => {
+                                        return <div className="form-error">{zipErr[key]}</div>
+                                    })}
+                                </div>
+                            </div>
+                        </div>
+                        {prop.updateaddress ? <div className="alert alert-success">ADDRESS ADDED SUCCESSFULY</div> : null}
+                        {prop.updateaddress ? myAddress() : null}
+                        <button class="btn btn-primary">Continue To Checkout</button>
+                    </form>
                 </div>
-            </div>
-            <div className="form-error">
-            {Object.keys(phoneErr).map((key)=>{
-                    return <div className="form-error">{phoneErr[key]}</div>
-                })}
-            </div>
-            
-            <div class="form-group">
-                <label for="inputAddress2">Address </label>
-                <input name="address" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" value={address} onChange={(e)=>{setAddress(e.target.value)}}/>
-            </div>
-            <div className="form-error">
-            {Object.keys(addressErr).map((key)=>{
-                    return <div className="form-error">{addressErr[key]}</div>
-                })}
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input name="city" type="text" class="form-control" id="inputCity" value={city} onChange={(e)=>{setCity(e.target.value)}} />
-                <br></br>
-            <div className="form-error">
-            {Object.keys(cityErr).map((key)=>{
-                    return <div className="form-error">{cityErr[key]}</div>
-                })}
-            </div>
-                </div>
-            
-                <div class="form-group col-md-6">
-                <label for="inputZip">Zip</label>
-                <input name="zip" type="text" class="form-control" id="inputZip" value={zip} onChange={(e)=>{setZip(e.target.value)}} />
-                <br></br>
-            <div className="form-error">
-            {Object.keys(zipErr).map((key)=>{
-                    return <div className="form-error">{zipErr[key]}</div>
-                })}
-            </div>
-                </div>  
-            </div>
-            {prop.updateaddress? <div className="alert alert-success">ADDRESS ADDED SUCCESSFULY</div>:null}  
-              {prop.updateaddress? myAddress():null} 
-    <button  class="btn btn-primary">Continue To Checkout</button> 
-    </form>
-    </div>
-    :<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>}
-</div>
+                : <div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>}
+        </div>
     )
-} 
-export default connect(function(state,prop){
-    console.log("address state",state)
-    return{
-        cartdetail:state?.cart,
-        loginstatus:state?.isloggedin,
-        isaddress:state?.address,
-        isaddErr:state?.isaddErr,
-        isload:state?.isload,
-        isadd:state?.isadd,
-        isloadErr:state?.isloadErr,
-        updateaddress:state?.updateaddress,
-        isloading:state?.isloading
+}
+export default connect(function (state, prop) {
+    console.log("address state", state)
+    return {
+        cartdetail: state?.cart,
+        loginstatus: state?.isloggedin,
+        isaddress: state?.address,
+        isaddErr: state?.isaddErr,
+        isload: state?.isload,
+        isadd: state?.isadd,
+        isloadErr: state?.isloadErr,
+        updateaddress: state?.updateaddress,
+        isloading: state?.isloading
     }
 })(Address)
 
@@ -269,7 +256,7 @@ export default connect(function(state,prop){
 //         return errors
 //         else
 //         return false
-        
+
 //     }
 //     var placeOrder=function()
 //     {
@@ -283,7 +270,7 @@ export default connect(function(state,prop){
 //             setFormerrors({})
 //         }
 //     }
-    
+
 //     return(
 //         <div>
 //         <h1>Address</h1>
@@ -302,15 +289,15 @@ export default connect(function(state,prop){
 //                 </div>
 //             </div>
 //             <div className="form-error">
-                
+
 //             </div>
-            
+
 //             <div class="form-group">
 //                 <label for="inputAddress2">Address </label>
 //                 <input name="address" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
 //             </div>
 //             <div className="form-error">
-                
+
 //             </div>
 //             <div class="form-row">
 //                 <div class="form-group col-md-6">
@@ -318,19 +305,19 @@ export default connect(function(state,prop){
 //                 <input name="city" type="text" class="form-control" id="inputCity"/>
 //                 <br></br>
 //             <div className="form-error">
-                
+
 //             </div>
 //                 </div>
-            
+
 //                 <div class="form-group col-md-6">
 //                 <label for="inputZip">Zip</label>
 //                 <input name="zip" type="text" class="form-control" id="inputZip"/>
 //                 <br></br>
 //             <div className="form-error">
-               
+
 //             </div>
 //                 </div>
-            
+
 //             </div>
 //     </form>
 //     <button  class="btn btn-primary" onClick={placeOrder}>Continue To Checkout</button>

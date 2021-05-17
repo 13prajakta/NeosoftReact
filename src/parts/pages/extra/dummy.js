@@ -139,7 +139,7 @@
 //     var user = {}
 //     // var [error,setError] = useState()
 //     // var[user , setUser] = useState({})
-    
+
 //     // let getEmail=(event)=>{
 //     //     console.log(event)
 //     //     setUser({
@@ -148,9 +148,9 @@
 //     //         password:user.password
 //     //     })
 //     //     user.email=event.target.value
-        
+
 //     // }
-    
+
 //     // let getPassword=(event)=>{
 //     //     console.log(event)
 //     //     setUser({
@@ -160,7 +160,7 @@
 //     //     })
 //     //     user.password=event.target.value
 //     // }
-    
+
 // //login.js
 
 
@@ -171,7 +171,7 @@
 
 //     const [emailErr,setEmailErr]=useState("")
 //     const [passwordErr,setPasswordErr]=useState("")
-    
+
 //     const[respon,setRespons]=useState("")
 //     const[invalidErr,setInvalid]=useState("")
 
@@ -200,7 +200,7 @@
 //     {
 //         const emailErr={};
 //         const passwordErr={};
-       
+
 //         let isValid=true;
 //         var emailreg=/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
@@ -232,13 +232,13 @@
 //     console.log("login success",respon)
 
 
-    
+
 //     return(
 //         <div>
 //        <h2 className="alert alert-info" style={{marginTop:"20px"}}>Login Here</h2>
 //        <form onSubmit={onSubmit}>
 //           <div>{}</div>
-      
+
 //        <div className="row">
 //            <div className="col-md-3"></div>
 //        <div className="col-md-6">
@@ -292,7 +292,7 @@
 // function Address(prop)
 // {   
 
-    
+
 //     const [name,setName]=useState("")
 //     const [phone,setPhone]=useState("")
 //     const [address,setAddress]=useState("")
@@ -316,16 +316,16 @@
 //         //     setCity("");
 //         //     setZip("");
 //         // }
-       
+
 //         var cake=[...prop.cartdetail];
-    
+
 //           //console.log("cake array",cake);
 //           let total = 0;
 //          const price=prop.cartdetail.map(item => {
-            
+
 //             return  (total= total+(item.price))           
 //           })
-          
+
 //          //total= total+(prop.cartdetail?.price)
 //           //console.log("price array",total)
 //         var detail={
@@ -358,7 +358,7 @@
 //             },(error)=>{
 //                 console.log("error from address api",error)
 //             })
-        
+
 //     }
 
 
@@ -434,7 +434,7 @@
 //         setZipErr(zipErr);
 //         return isValid;
 //     }
-    
+
 //     return(
 //         <div>
 //         <h1>Address</h1>
@@ -461,7 +461,7 @@
 //                     return <div className="form-error">{phoneErr[key]}</div>
 //                 })}
 //             </div>
-            
+
 //             <div class="form-group">
 //                 <label for="inputAddress2">Address </label>
 //                 <input name="address" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor" value={address} onChange={(e)=>{setAddress(e.target.value)}}/>
@@ -482,7 +482,7 @@
 //                 })}
 //             </div>
 //                 </div>
-            
+
 //                 <div class="form-group col-md-6">
 //                 <label for="inputZip">Zip</label>
 //                 <input name="zip" type="text" class="form-control" id="inputZip" value={zip} onChange={(e)=>{setZip(e.target.value)}} />
@@ -493,23 +493,23 @@
 //                 })}
 //             </div>
 //                 </div>
-                
+
 //                 {/* { prop.cartdetail?.length > 0 && prop.cartdetail.map((each, index)=>{
-                   
+
 //                        <div> <input type="hidden" value={price=(each.price)} /></div>
-                        
-                   
+
+
 //                     })
 //                 }
 //                  { prop.cartdetail?.length > 0 && prop.cartdetail.map((each, index)=>{
-                   
-                   
+
+
 //                     <input type="text" value={cake=(each.name)} />
-               
+
 //                 })
 //             } */}
 //             </div>
-   
+
 //     <button  class="btn btn-primary">Continue To Checkout</button>
 //     </form>
 //     :<div className="alert alert-danger">Your Session Has Been Expired !<b> Pleas Login Again</b></div>}
@@ -550,7 +550,7 @@
 // //         return errors
 // //         else
 // //         return false
-        
+
 // //     }
 // //     var placeOrder=function()
 // //     {
@@ -564,7 +564,7 @@
 // //             setFormerrors({})
 // //         }
 // //     }
-    
+
 // //     return(
 // //         <div>
 // //         <h1>Address</h1>
@@ -583,15 +583,15 @@
 // //                 </div>
 // //             </div>
 // //             <div className="form-error">
-                
+
 // //             </div>
-            
+
 // //             <div class="form-group">
 // //                 <label for="inputAddress2">Address </label>
 // //                 <input name="address" type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
 // //             </div>
 // //             <div className="form-error">
-                
+
 // //             </div>
 // //             <div class="form-row">
 // //                 <div class="form-group col-md-6">
@@ -599,19 +599,19 @@
 // //                 <input name="city" type="text" class="form-control" id="inputCity"/>
 // //                 <br></br>
 // //             <div className="form-error">
-                
+
 // //             </div>
 // //                 </div>
-            
+
 // //                 <div class="form-group col-md-6">
 // //                 <label for="inputZip">Zip</label>
 // //                 <input name="zip" type="text" class="form-control" id="inputZip"/>
 // //                 <br></br>
 // //             <div className="form-error">
-               
+
 // //             </div>
 // //                 </div>
-            
+
 // //             </div>
 // //     </form>
 // //     <button  class="btn btn-primary" onClick={placeOrder}>Continue To Checkout</button>

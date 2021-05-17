@@ -1,0 +1,87 @@
+.forgot{
+    margin-bottom: 50px;
+    margin-top: 40px
+}
+.forgotdiv{
+    border: 2px solid #f9d200;
+    padding: 30px;
+    border-radius: 20px;
+    background-color: #D3D3D3 
+}
+.login{
+    margin-bottom: 50px;
+}
+.login .loginh2{
+    margin-top: 20px;
+}
+.home{
+    margin-top: 20px;
+}
+.error{
+    color:red;
+}
+.cardd{
+    padding-top: 50px;
+    padding-left: 40px
+}
+.cardd .image{
+    width: 270px;
+    height: 250px
+}
+.cartt{
+    margin-bottom: 100px;
+}
+.cartbot{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.carttt .media-object{
+    width: 72px; 
+    height: 72px
+}
+.cartsumh2{
+    color: #0c1241;
+    font-style: italic
+}
+.myord{
+    font-style: italic
+}
+.cartsum img{
+    width: 150px; 
+    height: 100px
+}
+.cartsum h4{
+    color: #b9384f
+}
+.cartsum p{
+    color: #329e72;
+    font-weight: bold;
+}
+.cartsum .cartsumquant{
+    color: #f4c55c;
+    font-weight: bold;
+}
+.checkout{
+    margin-bottom: 30px
+}
+.checkoutli{
+    background-color: gray;
+}
+.payment{
+    display: inline-block
+}
+.carousall img{
+    height: 500px
+}
+.myorder{
+    width: 50%
+}
+.myorder1{
+    width: 10%
+}
+.myorder2{
+    width: 8%
+}
+.myorder3{
+    width: 22%
+}

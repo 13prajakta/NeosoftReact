@@ -1,128 +1,128 @@
-var demo= function(state={
-    user:null
-}, action){
-    switch(action.type){
-        case "LOGIN":{
+var demo = function (state = {
+    user: null
+}, action) {
+    switch (action.type) {
+        case "LOGIN": {
             console.log("login started")
-            state = {...state}
-            state["isfetching"] =true
+            state = { ...state }
+            state["isfetching"] = true
             return state
         }
 
-        case "LOGIN_SUCCESS":{
+        case "LOGIN_SUCCESS": {
             console.log("Here we have to write logic for login")
-            state = {...state}
-            state["isloggedin"] =true
-            state["user"]=action.payload
-            state["isfetching"] =false
-            state["isloginerr"] =false
+            state = { ...state }
+            state["isloggedin"] = true
+            state["user"] = action.payload
+            state["isfetching"] = false
+            state["isloginerr"] = false
             return state
         }
 
-        case "LOGIN_FAILURE":{
+        case "LOGIN_FAILURE": {
             console.log("Here we have to write logic for login failure")
-            state = {...state}
-            state["isloggedin"] =false
-            state["isfetching"] =false
-            state["isloginerr"] =true
+            state = { ...state }
+            state["isloggedin"] = false
+            state["isfetching"] = false
+            state["isloginerr"] = true
             return state
         }
 
-        case "LOGOUT":{
-            state = {...state}
+        case "LOGOUT": {
+            state = { ...state }
             localStorage.clear()
-           delete state["isloggedin"] 
+            delete state["isloggedin"]
             delete state["user"]
             return state
         }
-        case "CHECK_USER":{
+        case "CHECK_USER": {
             //console.log("Here we check user is presengt or not")
-            state = {...state}
-            state["isloggedin"] =true
-            state["user"]=action.payload
+            state = { ...state }
+            state["isloggedin"] = true
+            state["user"] = action.payload
             return state
         }
 
-        case "CARTDETAIL":{
+        case "CARTDETAIL": {
             //console.log("Here we see cart details")
-            state = {...state}
+            state = { ...state }
             //state["setcheckCart"]=true
-            state["cart"]=action.payload
+            state["cart"] = action.payload
             return state
         }
 
-        case "CARTUPDATE":{
+        case "CARTUPDATE": {
             //console.log("Here we remove cart details")
-            state = {...state}
-            state["setcheckCart"]=action.payload
+            state = { ...state }
+            state["setcheckCart"] = action.payload
             return state
         }
-        case "UPDATEADDRESS":{
+        case "UPDATEADDRESS": {
             //console.log("Here we remove cart details")
-            state = {...state}
-            state["updateaddress"]=action.payload
+            state = { ...state }
+            state["updateaddress"] = action.payload
             return state
         }
-        case "UPDATEASIDE":{
+        case "UPDATEASIDE": {
             //console.log("Here we remove cart details")
-            state = {...state}
-            state["updateaside"]=action.payload
+            state = { ...state }
+            state["updateaside"] = action.payload
             return state
         }
-        case "PERMADD":{
+        case "PERMADD": {
             //console.log("Here we remove cart details")
-            state = {...state}
-            state["permantaddress"]=action.payload
-            state["updateaddress"]=false
+            state = { ...state }
+            state["permantaddress"] = action.payload
+            state["updateaddress"] = false
             return state
         }
-        case "ADDRESS":{
+        case "ADDRESS": {
             console.log("address started loading")
-            state = {...state}
-            state["isloading"] =true
-            state["isadd"]=true
+            state = { ...state }
+            state["isloading"] = true
+            state["isadd"] = true
             return state
         }
-        case "ADDRESS_SUCC":{
+        case "ADDRESS_SUCC": {
             console.log("Here we address details success")
-            state = {...state}
-            state["isloading"] =false
-            state["address"]=action.payload
-            state["isadd"]=false
-            state["isload"] =true
-            state["isloadErr"] =false
+            state = { ...state }
+            state["isloading"] = false
+            state["address"] = action.payload
+            state["isadd"] = false
+            state["isload"] = true
+            state["isloadErr"] = false
             return state
         }
-        case "ADDRESS_FAILC":{
+        case "ADDRESS_FAILC": {
             console.log("Here we address details fails")
-            state = {...state}
-            state["isloading"] =false
-            state["isload"] =false
-            state["isloadErr"] =true
+            state = { ...state }
+            state["isloading"] = false
+            state["isload"] = false
+            state["isloadErr"] = true
             return state
         }
-        case "ORDERS":{
+        case "ORDERS": {
             console.log("Here we orders details")
-            state = {...state}
-            state["orders"]=action.payload
+            state = { ...state }
+            state["orders"] = action.payload
             return state
         }
-        case "CHECKROUTE":{
+        case "CHECKROUTE": {
             //console.log("Here we orders details")
-            state = {...state}
-            state["route"]=false
+            state = { ...state }
+            state["route"] = false
             return state
         }
-        case "ROUTESET":{
+        case "ROUTESET": {
             //console.log("Here we orders details")
-            state = {...state}
-            state["route"]=action.payload
+            state = { ...state }
+            state["route"] = action.payload
             return state
         }
-        
-        default :return state
 
-      
+        default: return state
+
+
     }
 }
 export default demo
