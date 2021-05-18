@@ -7,7 +7,7 @@ import Login from './parts/pages/authentication/Login';
 import Home from './parts/pages/home/Home';
 import Forgot from './parts/pages/authentication/Forgot';
 import Describe from './parts/pages/extra/Describe';
-import Detail from './parts/pages/extra/Detail';
+import Detail from './parts/pages/cart/Detail';
 import Search from './parts/pages/search/Search';
 import Error from './parts/pages/errors/error';
 import Cart from './parts/pages/cart/Cart';
