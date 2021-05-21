@@ -2,6 +2,7 @@ import { Link, useHistory } from "react-router-dom"
 import { useState, useEffect } from "react"
 import axios from 'axios'
 import { orderdetail } from "../../reduxstore/thunk";
+import '../../css/commoncss.css';
 import { connect } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListAlt, faSearch, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
@@ -93,7 +94,7 @@ function Nav(prop) {
         <div>
             {/* {increasecount} */}
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <Link to="/"><a class="navbar-brand" href="#">CAKE <span className="text-warning">SHOPPE</span></a>
+                <Link to="/"><a class="navbar-brand logo" href="#">CAKE <span className="text-warning">SHOPPE</span></a>
                 </Link><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -106,7 +107,7 @@ function Nav(prop) {
 
                         <li class="nav-item">
                             {prop.user &&
-                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true" style={{ color: "#ff557f" }}>Welcome, {prop.user}</a>
+                                <a class="nav-link disabled namee" href="#" tabindex="-1" aria-disabled="true" style={{ color: "#ff557f" }}>Welcome, {prop.user}</a>
                             } </li>
                     </ul>
                     <form class="form-inline my-2 my-lg-0">

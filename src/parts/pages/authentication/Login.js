@@ -4,62 +4,26 @@ import axios from "axios"
 import { useState, useEffect } from "react"
 import { connect } from "react-redux"
 import { Link, withRouter } from "react-router-dom"
+import { validate } from '../../../util/validate.js';
 
 function Login(prop) {
     console.log("login propsp", prop)
-    // useEffect(()=>{
-    //    // alert("mounted and updated")
-    // },[])
     var user = {}
-    // var [error,setError] = useState()
-    // var[user , setUser] = useState({})
-
-    // let getEmail=(event)=>{
-    //     console.log(event)
-    //     setUser({
-
-    //         email:event.target.value,
-    //         password:user.password
-    //     })
-    //     user.email=event.target.value
-
-    // }
-
-    // let getPassword=(event)=>{
-    //     console.log(event)
-    //     setUser({
-
-    //         password:event.target.value,
-    //         email:user.email
-    //     })
-    //     user.password=event.target.value
-    // }
-
-    //login.js
-
-
-
-    //form validate
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-
-    const [emailErr, setEmailErr] = useState("")
-    const [passwordErr, setPasswordErr] = useState("")
-
-    const [respon, setRespons] = useState("")
-    const [invalidErr, setInvalid] = useState("")
-
+   
+    let [errors, setErrors] = useState({})
     const onSubmit = (e) => {
         e.preventDefault();
-        const isvalid = formValidaion();
-        var user = {
-            email: email,
-            password: password
-        }
-        if (isvalid) {
-            setEmail("");
-            setPassword("");
-
+        let fields=e.target.elements
+        let error =validate(fields)
+        if(Object.keys(error).length>0){
+            setErrors(error)
+        } 
+       else {
+            
+            var user = {
+                email: fields.email.value,
+                password: fields.password.value
+            }
 
             console.log("user istrying to login", user)
             prop.dispatch({
@@ -68,38 +32,6 @@ function Login(prop) {
             })
         }
     }
-
-
-    const formValidaion = () => {
-        const emailErr = {};
-        const passwordErr = {};
-
-        let isValid = true;
-        var emailreg = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-        if (email.trim().length < 1) {
-            emailErr.emailee = "Email is required";
-            isValid = false;
-            setEmail("")
-        } else if (!emailreg.test(email)) {
-            emailErr.emailee = "Email is invalid";
-            isValid = false;
-            setEmail("")
-        }
-
-        if (password.trim().length < 1) {
-            passwordErr.passwordd = "password is required";
-            isValid = false;
-            setPassword("");
-        }
-
-
-        setEmailErr(emailErr);
-        setPasswordErr(passwordErr);
-        return isValid;
-    }
-
-    console.log("login success", respon)
 
     function myLogin() {
         setTimeout(() => { prop.history.push("/") }
@@ -122,23 +54,19 @@ function Login(prop) {
                         {prop.isloggedin ? myLogin() : null}
                         <div className="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value={email} onChange={(e) => { setEmail(e.target.value) }}></input>
+                            <input type="text" className="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
                             {/* { user && <label>{user.email}</label>} */}
                         </div>
                         <div className="form-error">
-                            {Object.keys(emailErr).map((key) => {
-                                return <div className="form-error">{emailErr[key]}</div>
-                            })}
+                        {errors.email ? <span className="text-danger">{errors.email}</span> : null}
                         </div>
                         <div className="form-group">
                             <label for="exampleInputPassword1">Password</label>
-                            <input type="password" className="form-control" id="exampleInputPassword1" value={password} onChange={(e) => { setPassword(e.target.value) }} />
+                            <input type="password" className="form-control" name="password" id="exampleInputPassword1" />
                             {/* { user && <label>{user.password}</label>} */}
                         </div>
                         <div className="form-error">
-                            {Object.keys(passwordErr).map((key) => {
-                                return <div className="form-error">{passwordErr[key]}</div>
-                            })}
+                        {errors.password ? <span className="text-danger">{errors.password}</span> : null}
                         </div>
                         <Link to="/signup"><a>Need help?Register</a></Link> <Link to="/forgot"><a class="text-danger">Forgot Password?</a></Link><br></br>
                                 <br></br>

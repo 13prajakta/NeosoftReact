@@ -8,6 +8,7 @@ import { useParams, Link } from "react-router-dom";
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import '../../../css/commoncss.css';
 
 var img = "cake.jpg";
 var veg = "veg.png";

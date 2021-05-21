@@ -138,7 +138,7 @@ function Cart(prop) {
 
                 </div>
 
-            </div> : <div className="cartbot"><p classNameName="alert alert-danger">Your Cart empty</p></div>
+            </div> : <div className="cartbot"><p className="alert alert-danger">Your Cart empty</p></div>
 
     )
 }

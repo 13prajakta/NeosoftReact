@@ -83,11 +83,7 @@ class Signup extends React.Component {
                 console.log("error from signup api", error)
             })
 
-        } else {
-            //alert("Form has errors.")
-
-
-        }
+        } 
 
     }
 
@@ -97,54 +93,12 @@ class Signup extends React.Component {
         this.setState({ fields });
     }
 
-    user = {}
-    email = (event) => {
-        this.user.email = event.target.value
-    }
-    getName = (event) => {
-        this.user.name = event.target.value
-    }
-    password = (event) => {
-        this.user.password = event.target.value
-    }
-    getemail = (event) => {
-        console.log('event value', event.target.value)
-    }
-    register = () => {
-        if (!this.user.email || !this.user.password || !this.user.name) {
-            this.setState({
-                errorMsg: "Please Fill All details"
-            })
-        }
-        else {
-
-            // let apiurl="https://apifromashu.herokuapp.com/api/register"
-            // axios({
-            //     url:apiurl,
-            //     method:"post",
-            //     data:this.user
-            // }).then((response)=>{
-            //     console.log("response from signup api" ,response.data)
-            // },(error)=>{
-            //     console.log("error from signup api",error)
-            // })
-
-        }
-        console.log("...user details", this.user)
-    }
-    goOnline = () => {
-        this.setState({
-            onLineUse: this.state.onLineUse + 1
-        })
-    }
+    
 
     render() {
         return (
             <div className="login">
-                {/* hey users {this.state.onLineUse}
-                <input onChange={this.getemail}></input>
-                <button onClick={this.goOnline}>Go button</button> */}
-
+                
                 <h2 className="alert alert-info loginh2">Signup Here</h2>
                 <form onSubmit={this.contactSubmit.bind(this)}>
                     <div className="form-group">
