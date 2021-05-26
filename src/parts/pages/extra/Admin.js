@@ -8,8 +8,8 @@ function Admin() {
   //console.log("admin",cakes);
 
   let [loading, setLoading] = useState(false)
-  let allcakesapi = process.env.REACT_APP_BASE_URL + "api/allcakes"
-
+  let allcakesapi = process.env.REACT_APP_BASE_URL + "/api/allcakes"
+  console.log("my all cake api",allcakesapi)
   useEffect(() => {
     axios({
       url: allcakesapi,
